@@ -12,19 +12,19 @@ function TrainingFacade(){
 
     const createTrainingSession = (trainingSession) => {
         const options = apiFacade.makeOptions("POST", null, trainingSession)
-        return fetch(API_URL + "/api/info/training", options)
+        return fetch(API_URL + "/api/training", options)
             .then(apiFacade.handleHttpErrors)
     }
 
     const updateTrainingSession = (trainingSession) => {
         const options = apiFacade.makeOptions("PUT", null, trainingSession)
-        return fetch(API_URL + "/api/info/training/update", options)
+        return fetch(API_URL + "/api/training/update", options)
             .then(apiFacade.handleHttpErrors)
     }
 
     const deleteTrainingSession = (id) => {
         const options = apiFacade.makeOptions("DELETE", null,)
-        return fetch(API_URL + "/api/info/training/"+id, options)
+        return fetch(API_URL + "/api/training/"+id, options)
             .then(apiFacade.handleHttpErrors)
     }
 
