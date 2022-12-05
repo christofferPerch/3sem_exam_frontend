@@ -5,9 +5,20 @@ import {API_URL} from "../../settings.js";
 
 function UserFacade () {
 
-    const createUser = (user, password) => {
-        const options = apiFacade.makeOptions("POST", null, {"userName": user, "userPass": password})
-        return fetch(API_URL + "/api/info", options)
+
+    const createUser = (user, pass,email,streetAddress,zipCode,cityName) => {
+        const options = apiFacade.makeOptions("POST", null,
+            {"userName": user,
+                  "userEmail": email,
+                  "userPass":pass,
+                  "address": {
+                      "streetAddress": streetAddress,
+                      "cityInfo":{
+                      "zipCode": zipCode,
+                      "cityName": cityName
+                      }}}
+        )
+        return fetch(API_URL + "/api/users", options)
             .then(apiFacade.handleHttpErrors)
     }
 /*
@@ -61,6 +72,7 @@ function UserFacade () {
         getUserName,
         getUserId
     }
+
 }
 
 const userFacade = UserFacade();
