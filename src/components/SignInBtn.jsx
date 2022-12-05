@@ -1,15 +1,15 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 
-function LoginButton() {
+function SignInBtn() {
     const navigate = useNavigate()
 
     return (
         <div className="login-container">
-            <button onClick={() => navigate("/login")}>Login</button>
+            <button onClick={() => navigate("/signin")}>Sign In</button>
 
         </div>
     );
 }
 
-export default LoginButton;
+export default SignInBtn;

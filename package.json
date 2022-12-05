@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
+    "react-footer": "^0.0.0",
     "react-router": "^6.4.4",
     "react-router-dom": "^6.4.4"
   },

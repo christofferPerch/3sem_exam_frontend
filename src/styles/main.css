@@ -17,3 +17,28 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer.container {
+  padding: 2.25em 0;
+  margin-top: auto;
+  border-top: 1px solid rgb(219, 219, 219);
+}
+
+.container {
+  width: 100%;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.footer-right {
+  float: right;
+  margin-top: auto;
+  padding: 0 10px;
+
+}

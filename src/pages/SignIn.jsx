@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import loginFacade from "../utils/loginFacade.js";
 import "../styles/user.css";
 
-function Login({setLoggedIn}) {
+function SignIn({setLoggedIn}) {
     const init = {username: "", password: ""};
     const [loginCredentials, setLoginCredentials] = useState(init);
 
@@ -21,8 +21,10 @@ function Login({setLoggedIn}) {
     }
 
     return (
-        <div className="login">
+        <div className="signin">
             <form>
+                <h2>Sign In</h2>
+                <p>_________________________________________</p>
                 <label for="username"><b>Username</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter Username" name="username" id="username"/>{" "}
                 <label htmlFor="password"><b>Password</b></label>
@@ -38,4 +40,4 @@ function Login({setLoggedIn}) {
     )
 }
 
-export default Login;
+export default SignIn;

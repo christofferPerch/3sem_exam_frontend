@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import LoggedIn from "./LoggedIn.jsx";
 import "../styles/header.css";
 import SignUpBtn from "./SignUpBtn.jsx";
-import LoginButton from "./LoginButton.jsx";
+import SignInBtn from "./SignInBtn.jsx";
 
 
 function Header({loggedIn, setLoggedIn, userFacade}) {
@@ -15,7 +15,7 @@ function Header({loggedIn, setLoggedIn, userFacade}) {
 
             {!loggedIn ? (<SignUpBtn/>) : (<div></div>)}
 
-            {!loggedIn ? (<LoginButton setLoggedIn={setLoggedIn} />) : (<div><LoggedIn setLoggedIn={setLoggedIn}/></div>)}
+            {!loggedIn ? (<SignInBtn setLoggedIn={setLoggedIn} />) : (<div><LoggedIn setLoggedIn={setLoggedIn}/></div>)}
 
         </nav>
     );
