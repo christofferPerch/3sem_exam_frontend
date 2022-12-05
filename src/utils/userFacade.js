@@ -21,14 +21,43 @@ function UserFacade () {
         return fetch(API_URL + "/api/users", options)
             .then(apiFacade.handleHttpErrors)
     }
-/*
-    const updateUser = (user, userId) => {
-        const options = apifacade.makeOptions("PUT", null, {"userName": user})
-        return fetch(API_URL + "/api/info/" + userId, options)
-            .then(apifacade.handleHttpErrors)
+
+  /*  const updateUser = (user, userId) => {
+        const options = apiFacade.makeOptions("PUT", null, {"userName": user})
+        return fetch(API_URL + "/api/users/" + userId, options)
+            .then(apiFacade.handleHttpErrors)
     }
 
-*/
+   */
+
+    const deleteUser = (userName) => {
+        const options = apiFacade.makeOptions("DELETE",null,null);
+        return fetch(API_URL +"/api/users/"+userName,options)
+            .then(apiFacade.handleHttpErrors)
+    }
+
+    const getUserByUserName = (userName) => {
+        const options = apiFacade.makeOptions("GET",null,null);
+        return fetch(API_URL+"/api/users/"+userName,options)
+            .then(apiFacade.handleHttpErrors)
+    }
+    const getAllUsers = () => {
+        const options = apiFacade.makeOptions("GET",null,null);
+        return fetch(API_URL+"/api/users/all",options)
+            .then(apiFacade.handleHttpErrors)
+    }
+
+    const addUserToTrainingSession = (userName,trainingId) => {
+        const options = apiFacade.makeOptions("POST",null,null);
+        return fetch(API_URL+"/api/users/add/"+userName+"/"+trainingId)
+            .then(apiFacade.handleHttpErrors)
+    }
+    const removeUserToTrainingSession = (userName,trainingId) => {
+        const options = apiFacade.makeOptions("DELETE",null,null);
+        return fetch(API_URL+"/api/users/add/"+userName+"/"+trainingId)
+            .then(apiFacade.handleHttpErrors)
+    }
+
     const getUserRoles = () => {
         const token = loginFacade.getToken()
         if (token != null) {
