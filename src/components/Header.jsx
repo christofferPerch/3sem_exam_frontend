@@ -1,8 +1,9 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import Login from "./Login.jsx";
+import Login from "../pages/Login.jsx";
 import LoggedIn from "./LoggedIn.jsx";
 import "../styles/header.css";
+import LoginButton from "./LoginButton.jsx";
 
 function Header({loggedIn, setLoggedIn, userFacade}) {
     return (
@@ -11,9 +12,9 @@ function Header({loggedIn, setLoggedIn, userFacade}) {
 
             <NavLink className="active" to="/"><i className="fa fa-fw fa-home"></i> Home</NavLink>
 
+            {!loggedIn ? (<LoginButton/>) :
+                (<><LoggedIn setLoggedIn={setLoggedIn}/></>)}
 
-
-            {!loggedIn ? (<Login setLoggedIn={setLoggedIn} />) : (<div><LoggedIn setLoggedIn={setLoggedIn}/></div>)}
 
         </nav>
     );

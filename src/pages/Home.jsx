@@ -1,11 +1,13 @@
 import React from 'react';
+import {Outlet} from "react-router-dom";
 
 function Home({userFacade}) {
 
     return (
         <div>
             <h1>Home</h1>
-            <p> Welcome {userFacade.getUserName()}</p>
+            <p> Welcome </p>
+            <Outlet/>
         </div>
     );
 }

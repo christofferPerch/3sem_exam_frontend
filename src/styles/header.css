@@ -79,7 +79,7 @@ body {
 }
 
 .topnav .login-container button:hover {
-    background-color: green;
+    background-color: #08a4b7;
 }
 
 @media screen and (max-width: 600px) {

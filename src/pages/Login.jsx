@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import loginFacade from "../utils/loginFacade.js";
+import "../styles/user.css";
 
 function Login({setLoggedIn}) {
     const init = {username: "", password: ""};
@@ -20,11 +21,18 @@ function Login({setLoggedIn}) {
     }
 
     return (
-        <div className="login-container">
+        <div className="login">
             <form>
-                <input onChange={onChange} type="text" placeholder="Username" id="username"/>{" "}
-                <input onChange={onChange} type="password" placeholder="Password" id="password"/>
+                <label for="username"><b>Username</b></label>
+                <input onChange={onChange} type="text" placeholder="Enter Username" name="username" id="username"/>{" "}
+                <label htmlFor="password"><b>Password</b></label>
+                <input onChange={onChange} type="password" placeholder="Enter Password" name="password" id="password"/>
                 <button onClick={performLogin} type="submit">Login</button>
+            </form>
+            <p>_________________________________________</p>
+            <form>
+                <p className="signup-p">Don't have an account yet? Sign up now!</p>
+                <button className="signup-btn">Sign Up</button>
             </form>
         </div>
     )
