@@ -4,6 +4,9 @@ import {Route, Routes} from "react-router";
 import Header from "./components/Header.jsx";
 import userFacade from "./utils/userFacade.js";
 import Home from "./pages/Home.jsx";
+import TrainingFacade from "./utils/trainingFacade";
+import AdminPanel from "./pages/AdminPanel.jsx";
+import trainingFacade from "./utils/trainingFacade";
 
 function App() {
 
@@ -19,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home userFacade={userFacade}/>}/>
         <Route path="*" element={<h1>Page Not Found !!!!</h1>}/>
+        <Route path="admin-panel" element={<AdminPanel trainingFacade={trainingFacade}/>}/>
       </Routes>
 
     </div>
