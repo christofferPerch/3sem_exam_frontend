@@ -45,10 +45,10 @@ function Home({loggedIn, setLoggedIn}) {
                 <p><strong>Phone Number:</strong> <br/>29922992</p>
                 <p><strong>Based in:</strong> <br/> Denmark</p>
                 <p><strong>Location:</strong> <br/> Nørgaardsvej 30 - Kongens Lyngby, 2800</p>
-                <a href="#" className="fa fa-facebook"></a>
-                <a href="#" className="fa fa-twitter"></a>
-                <a href="#" className="fa fa-instagram"></a>
-                <a href="#" className="fa fa-youtube"></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="fa fa-facebook"></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="fa fa-twitter"></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="fa fa-instagram"></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="fa fa-youtube"></a>
 
 
             </div>
