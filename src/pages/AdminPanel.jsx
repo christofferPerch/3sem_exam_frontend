@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "../styles/AdminPanel.css";
+import userFacade from "../utils/userFacade.js";
 
 function AdminPanel({trainingFacade}) {
     const [training, setTraining] = useState([]);
@@ -27,7 +28,7 @@ function AdminPanel({trainingFacade}) {
         event.preventDefault();
     }
 
-
+    //if(userFacade.hasUserAccess("admin", true)){
     return (
         <div>
             <h1 className={"myBody"}>TRAINING SESSION SCHEDULE</h1>
@@ -195,6 +196,7 @@ function AdminPanel({trainingFacade}) {
             </form>
         </div>
     );
+    //}
 }
 
 //{data.fullAddress}

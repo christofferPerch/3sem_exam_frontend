@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import TrainingFacade from "./utils/trainingFacade";
 import AdminPanel from "./pages/AdminPanel.jsx";
 import trainingFacade from "./utils/trainingFacade";
+import UserOverview from "./pages/UserOverview.jsx";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Home userFacade={userFacade}/>}/>
         <Route path="*" element={<h1>Page Not Found !!!!</h1>}/>
         <Route path="admin-panel" element={<AdminPanel trainingFacade={trainingFacade}/>}/>
+        <Route path="admin-panel/user-overview" element={<UserOverview userFacade={userFacade}/>}/>
       </Routes>
 
     </div>
