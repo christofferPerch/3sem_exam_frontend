@@ -28,17 +28,17 @@ function SignUp({}) {
             <form>
                 <h2>Sign Up</h2>
                 <p>_________________________________________</p>
-                <label for="username"><b>Username</b></label>
+                <label htmlFor="username"><b>Username</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter Username" name="username" id="userName"/>
-                <label for="password"><b>Password</b></label>
+                <label htmlFor="password"><b>Password</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter Password" id="userPass"/>
-                <label for="email"><b>Email</b></label>
+                <label htmlFor="email"><b>Email</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter Email" name="name" id="userEmail"/>
-                <label for="address"><b>Street Address</b></label>
+                <label htmlFor="address"><b>Street Address</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter Street Address" name="address" id="streetAddress"/>
-                <label for="zip"><b>Zip Code</b></label>
+                <label htmlFor="zip"><b>Zip Code</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter Zip Code" name="zip" id="zipCode"/>
-                <label for="city"><b>City</b></label>
+                <label htmlFor="city"><b>City</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter City" name="city" id="cityName"/>
                 <button onClick={performSignUp} type="submit">Sign up</button>
             </form>

@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn.jsx";
 import LoggedIn from "./components/LoggedIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import SignUpConfirmation from "./pages/SignUpConfirmation";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
 
@@ -20,9 +21,10 @@ function App() {
 
     return (
         <div className="main">
-            <Header setLoggedIn={setLoggedIn} loggedIn={loggedIn} userfacade={userFacade}/>
+            <Header setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>
             <Routes>
                 <Route path="/" element={<Home userFacade={userFacade}/>}/>
+                <Route path="profile" element={<Profile setLoggedIn={setLoggedIn}/>}/>
                 <Route path="signin" element={!loggedIn ? (<SignIn setLoggedIn={setLoggedIn}/>) : (<><Home/></>)}/>
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/SignUpConfirmation" element={<SignUpConfirmation/>}/>

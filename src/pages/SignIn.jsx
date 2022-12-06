@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import loginFacade from "../utils/loginFacade.js";
 import "../styles/user.css";
+import userFacade from "../utils/userFacade.js";
 
 function SignIn({setLoggedIn}) {
     const init = {username: "", password: ""};
@@ -18,6 +19,7 @@ function SignIn({setLoggedIn}) {
 
     const onChange = (evt) => {
         setLoginCredentials({...loginCredentials, [evt.target.id]: evt.target.value})
+
     }
 
     return (
@@ -25,7 +27,7 @@ function SignIn({setLoggedIn}) {
             <form>
                 <h2>Sign In</h2>
                 <p>_________________________________________</p>
-                <label for="username"><b>Username</b></label>
+                <label htmlFor="username"><b>Username</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter Username" name="username" id="username"/>{" "}
                 <label htmlFor="password"><b>Password</b></label>
                 <input onChange={onChange} type="password" placeholder="Enter Password" name="password" id="password"/>
