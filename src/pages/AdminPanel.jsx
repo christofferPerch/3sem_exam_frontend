@@ -5,6 +5,7 @@ function AdminPanel({trainingFacade}) {
     const [training, setTraining] = useState([]);
     const [edit, setEdit] = useState(0);
     const [refresh, setRefresh] = useState(false);
+    const [create, setCreate] = useState(false);
     useEffect(() => {
         const getData = async () => {
             trainingFacade.getAllTrainingSessions((data) => {
@@ -30,6 +31,74 @@ function AdminPanel({trainingFacade}) {
     return (
         <div>
             <h1 className={"myBody"}>TRAINING SESSION SCHEDULE</h1>
+            {create ? (
+            <div>
+                <button onClick={() => {setCreate(false)}}>Cancel</button>
+
+            <form onSubmit={handleSubmit}>
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                        <th>Full address</th>
+                        <th>Category</th>
+                        <th>Participants</th>
+                        <th>Create</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder={"Title"} value={inputs.title} onChange={handleChange} name={"title"}/></td>
+                        <td><input type="text" placeholder={"Time"} value={inputs.time} onChange={handleChange} name={"time"}/></td>
+                        <td><input type="text" placeholder={"Date"} value={inputs.date} onChange={handleChange} name={"date"}/></td>
+                        <td><input type="text" placeholder={"Full address"} value={inputs.fullAddress} onChange={handleChange} name={"fullAddress"}/></td>
+                        <select name="category" onChange={handleChange} >
+                            <option disabled={true} selected={true}>Choose category</option>
+                            <option value="1">Tighten up</option>
+                            <option value="2">Pilates</option>
+                            <option value="3">Yoga</option>
+                            <option value="4">Bike Power</option>
+                            <option value="5">Dance</option>
+                            <option value="6">Crossfit</option>
+                            <option value="7">Zumba</option>
+                            <option value="8">Weight lifting</option>
+                            <option value="9">Boxing</option>
+                            <option value="10">Circle training</option>
+                            <option value="11">Endurance training</option>
+                        </select>
+
+                        <td><input type="number" placeholder={"Max participants"} value={inputs.maxParticipants} onChange={handleChange} name={"maxParticipants"}/></td>
+                        <td>
+                            <button onClick={() => {
+                                const json =  {
+                                    "title": inputs.title,
+                                    "time": inputs.time,
+                                    "date": inputs.date,
+                                    "fullAddress": inputs.fullAddress,
+                                    "category": {
+                                        "id": inputs.category
+                                    },
+                                    "maxParticipants": inputs.maxParticipants
+                                }
+                                trainingFacade.createTrainingSession(json).then(() => {setRefresh(!refresh); setCreate(false)});
+                            }}>Submit
+                            </button>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            </div>
+            ) : (
+                <button onClick={() => {setCreate(true)}}>Create training session</button>
+            )}
+
+            <br/>
+            <br/>
+            <hr/>
+            <br/>
+            <br/>
             <form onSubmit={handleSubmit}>
             <table>
                 <tr>
@@ -41,9 +110,6 @@ function AdminPanel({trainingFacade}) {
                     <th>Participants</th>
                     <th>Edit</th>
                     <th>Delete</th>
-                </tr>
-                <tr>
-                    <td></td>
                 </tr>
 
                 {training.map((data) => {
