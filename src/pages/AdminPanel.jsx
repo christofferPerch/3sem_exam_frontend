@@ -3,6 +3,7 @@ import "../styles/AdminPanel.css";
 
 function AdminPanel({trainingFacade}) {
     const [training, setTraining] = useState([]);
+    const [refresh, setRefresh] = useState(false);
     useEffect(() => {
         const getData = async () => {
             trainingFacade.getAllTrainingSessions((data) => {
@@ -10,7 +11,7 @@ function AdminPanel({trainingFacade}) {
             }, "Some error")
         }
         getData();
-    }, []);
+    }, [refresh]);
 
     return (
         <div>
@@ -25,20 +26,28 @@ function AdminPanel({trainingFacade}) {
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
+
                 {training.map((data) => {
                     return (
+                        <tr key={data.id}>
+                            <td>{data.title}</td>
+                            <td>{data.time}</td>
+                            <td>{data.date}</td>
+                            <td>{data.category.categoryName}</td>
+                            <td>{data.users.length}/{data.maxParticipants}</td>
+                            <td>
+                                <button>Edit</button>
+                            </td>
+                            <td>
+                                <button onClick={() => {
+                                    trainingFacade.deleteTrainingSession(data.id).then(() => {
+                                        setRefresh(!refresh);
+                                    });
 
-                            <tr key={data.id}>
-                                <td>{data.title}</td>
-                                <td>{data.time}</td>
-                                <td>{data.date}</td>
-                                <td>{data.category.categoryName}</td>
-                                <td>{data.users.length}/{data.maxParticipants}</td>
-                                <td><button >Edit</button></td>
-                                <td><button onClick={() => {
-                                    trainingFacade.deleteTrainingSession(data.id);
-                                }}>Delete</button></td>
-                            </tr>
+                                }}>Delete
+                                </button>
+                            </td>
+                        </tr>
                     );
                 })}
             </table>
