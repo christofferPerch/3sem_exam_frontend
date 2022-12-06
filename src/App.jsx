@@ -4,6 +4,10 @@ import {Route, Routes} from "react-router";
 import Header from "./components/Header.jsx";
 import userFacade from "./utils/userFacade.js";
 import Home from "./pages/Home.jsx";
+import TrainingFacade from "./utils/trainingFacade";
+import AdminPanel from "./pages/AdminPanel.jsx";
+import trainingFacade from "./utils/trainingFacade";
+import UserOverview from "./pages/UserOverview.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import SignUpConfirmation from "./pages/SignUpConfirmation";
@@ -26,6 +30,8 @@ function App() {
                 <Route path="signin" element={!loggedIn ? (<SignIn setLoggedIn={setLoggedIn}/>) : (<><Home/></>)}/>
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/SignUpConfirmation" element={<SignUpConfirmation/>}/>
+                <Route path="admin-panel" element={<AdminPanel trainingFacade={trainingFacade}/>}/>
+                <Route path="admin-panel/user-overview" element={<UserOverview userFacade={userFacade}/>}/>
                 <Route path="*" element={<h1>Page Not Found !!!!</h1>}/>
             </Routes>
 
