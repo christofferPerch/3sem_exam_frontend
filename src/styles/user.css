@@ -55,6 +55,17 @@ button {
     width: 100%;
 }
 
+.signup-home-btn {
+    background-color: #08a4b7;
+    color: white;
+    padding: 10px 16px;
+    margin: 6px 0;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 50px;
+}
+
 button:hover {
     opacity: 0.8;
 }
