@@ -22,13 +22,23 @@ function UserFacade () {
             .then(apiFacade.handleHttpErrors)
     }
 
-  /*  const updateUser = (user, userId) => {
-        const options = apiFacade.makeOptions("PUT", null, {"userName": user})
-        return fetch(API_URL + "/api/users/" + userId, options)
+   const updateUser = (username, updateEmail, updatePass,updateAddress,updateZip,updateCity) => {
+        const options = apiFacade.makeOptions("PUT", true,
+            {"userName": username,
+                "userEmail": updateEmail,
+                "userPass":updatePass,
+                "address": {
+                    "streetAddress": updateAddress,
+                    "cityInfo":{
+                        "zipCode": updateZip,
+                        "cityName": updateCity
+                    }}}
+            )
+        return fetch(API_URL + "/api/users/" + username, options)
             .then(apiFacade.handleHttpErrors)
     }
 
-   */
+
 
     const deleteUser = (userName) => {
         const options = apiFacade.makeOptions("DELETE",null,null);
@@ -79,27 +89,69 @@ function UserFacade () {
         if (token != null) {
             const payloadBase64 = loginFacade.getToken().split('.')[1]
             const decodedClaims = JSON.parse(window.atob(payloadBase64))
-            const username = decodedClaims.username
-            return username
+            return decodedClaims.username
         } else return ""
     }
 
-    const getUserId = () => {
+    const getUserEmail = () => {
         const token = loginFacade.getToken()
         if (token != null) {
             const payloadBase64 = loginFacade.getToken().split('.')[1]
             const decodedClaims = JSON.parse(window.atob(payloadBase64))
-            const id = decodedClaims.id
-            return id
+            return decodedClaims.userEmail
         } else return ""
     }
+
+    const getUserPass = () => {
+        const token = loginFacade.getToken()
+        if (token != null) {
+            const payloadBase64 = loginFacade.getToken().split('.')[1]
+            const decodedClaims = JSON.parse(window.atob(payloadBase64))
+            return decodedClaims.userPass
+        } else return ""
+    }
+
+    const getUserAddress = () => {
+        const token = loginFacade.getToken()
+        if (token != null) {
+            const payloadBase64 = loginFacade.getToken().split('.')[1]
+            const decodedClaims = JSON.parse(window.atob(payloadBase64))
+            return decodedClaims.streetAddress
+        } else return ""
+    }
+
+    const getUserZipCode = () => {
+        const token = loginFacade.getToken()
+        if (token != null) {
+            const payloadBase64 = loginFacade.getToken().split('.')[1]
+            const decodedClaims = JSON.parse(window.atob(payloadBase64))
+            return decodedClaims.zipCode
+        } else return ""
+    }
+
+    const getUserCityName = () => {
+        const token = loginFacade.getToken()
+        if (token != null) {
+            const payloadBase64 = loginFacade.getToken().split('.')[1]
+            const decodedClaims = JSON.parse(window.atob(payloadBase64))
+            return decodedClaims.cityName
+        } else return ""
+    }
+
     return {
         createUser,
-      //  updateUser,
+        updateUser,
         hasUserAccess,
         getUserRoles,
         getUserName,
-        getUserId
+        getUserByUserName,
+        getUserEmail,
+        getUserAddress,
+        getUserZipCode,
+        getUserCityName,
+        getUserPass,
+        deleteUser
+
     }
 
 }

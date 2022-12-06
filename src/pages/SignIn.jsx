@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import loginFacade from "../utils/loginFacade.js";
 import "../styles/user.css";
+import userFacade from "../utils/userFacade.js";
 
 function SignIn({setLoggedIn}) {
     const init = {username: "", password: ""};
@@ -18,6 +19,7 @@ function SignIn({setLoggedIn}) {
 
     const onChange = (evt) => {
         setLoginCredentials({...loginCredentials, [evt.target.id]: evt.target.value})
+
     }
 
     return (
