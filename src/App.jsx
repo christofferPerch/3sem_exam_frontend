@@ -30,7 +30,7 @@ function App() {
                 <Route path="signin" element={!loggedIn ? (<SignIn setLoggedIn={setLoggedIn}/>) : (<><Home/></>)}/>
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/SignUpConfirmation" element={<SignUpConfirmation/>}/>
-                <Route path="admin-panel" element={<AdminPanel trainingFacade={trainingFacade}/>}/>
+                <Route path="admin-panel" element={<AdminPanel trainingFacade={trainingFacade} loggedIn={loggedIn}/>}/>
                 <Route path="admin-panel/user-overview" element={<UserOverview userFacade={userFacade}/>}/>
                 <Route path="*" element={<h1>Page Not Found !!!!</h1>}/>
             </Routes>

@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import "../styles/AdminPanel.css";
 import userFacade from "../utils/userFacade.js";
 
-function AdminPanel({trainingFacade}) {
+function AdminPanel({trainingFacade, loggedIn}) {
     const [training, setTraining] = useState([]);
     const [edit, setEdit] = useState(0);
     const [refresh, setRefresh] = useState(false);
     const [create, setCreate] = useState(false);
     const [viewUsers, setViewUsers] = useState(0);
+
+
     useEffect(() => {
         const getData = async () => {
             trainingFacade.getAllTrainingSessions((data) => {
@@ -29,7 +31,7 @@ function AdminPanel({trainingFacade}) {
         event.preventDefault();
     }
 
-    if(userFacade.hasUserAccess("admin", true)){
+    if(userFacade.hasUserAccess("admin", loggedIn)){
     return (
         <div>
             <h1 className={"myBody"}>TRAINING SESSION SCHEDULE</h1>
