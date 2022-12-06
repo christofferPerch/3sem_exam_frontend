@@ -8,7 +8,7 @@ import logo from "../images/logo.png";
 import userFacade from "../utils/userFacade.js";
 
 
-function Header({loggedIn, setLoggedIn, userFacade}) {
+function Header({loggedIn, setLoggedIn}) {
     return (
 
         <nav className="topnav">
