@@ -5,9 +5,8 @@ function SignUpHomeBtn() {
     const navigate = useNavigate()
 
     return (
-        <div className="signup-home-btn">
-            <button onClick={() => navigate("/signup")}>Sign Up Now!</button>
-
+        <div className="home-center">
+            <button className="signup-home-btn" onClick={() => navigate("/signup")}>Sign Up Now!</button>
         </div>
     );
 }

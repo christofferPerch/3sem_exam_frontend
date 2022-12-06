@@ -40,7 +40,7 @@ function SignUp({}) {
                 <input onChange={onChange} type="text" placeholder="Enter Zip Code" name="zip" id="zipCode"/>
                 <label htmlFor="city"><b>City</b></label>
                 <input onChange={onChange} type="text" placeholder="Enter City" name="city" id="cityName"/>
-                <button onClick={performSignUp} type="submit">Sign up</button>
+                <button className="signup-btn" onClick={performSignUp} type="submit">Sign up</button>
             </form>
         </div>
     )
