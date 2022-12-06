@@ -31,7 +31,7 @@ function SignIn({setLoggedIn}) {
                 <input onChange={onChange} type="text" placeholder="Enter Username" name="username" id="username"/>{" "}
                 <label htmlFor="password"><b>Password</b></label>
                 <input onChange={onChange} type="password" placeholder="Enter Password" name="password" id="password"/>
-                <button onClick={performLogin} type="submit">Login</button>
+                <button className="signup-btn" onClick={performLogin} type="submit">Login</button>
             </form>
             <p>_________________________________________</p>
             <form>

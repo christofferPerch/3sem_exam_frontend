@@ -4,21 +4,19 @@ import LoggedIn from "./LoggedIn.jsx";
 import "../styles/header.css";
 import SignUpBtn from "./SignUpBtn.jsx";
 import SignInBtn from "./SignInBtn.jsx";
-import userFacade from "../utils/userFacade.js";
+import logo from "../images/logo.png";
 
 
-function Header({loggedIn, setLoggedIn}) {
+function Header({loggedIn, setLoggedIn, userFacade}) {
     return (
 
         <nav className="topnav">
-
-            <NavLink className="active" to="/"><i className="fa fa-fw fa-home"></i> Home</NavLink>
-
-            {loggedIn ? (<NavLink className="profileIcon" to="profile"><i className="fa fa-user"></i> {userFacade.getUserName()}</NavLink>) : <></>}
+            <NavLink className="nav-logo" to="/"><i className="fa fa-heartbeat"></i></NavLink>
+            <NavLink className="nav-home" to="/"><i></i> Home</NavLink>
 
             {!loggedIn ? (<SignUpBtn/>) : (<div></div>)}
 
-            {!loggedIn ? (<SignInBtn setLoggedIn={setLoggedIn} />) : (<div><LoggedIn setLoggedIn={setLoggedIn}/></div>)}
+            {!loggedIn ? (<SignInBtn setLoggedIn={setLoggedIn}/>) : (<div><LoggedIn setLoggedIn={setLoggedIn}/></div>)}
 
         </nav>
     );

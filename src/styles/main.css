@@ -40,5 +40,54 @@ footer.container {
   float: right;
   margin-top: auto;
   padding: 0 10px;
+}
 
+.contentleft {
+  position: inherit;
+  float: left;
+  margin: 50px 0px 90px 200px;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #04444b;
+  padding: 0;
+  font-family: Arial, Times, serif;
+}
+
+.contentright {
+  position: inherit;
+  float: right;
+  margin: 50px 200px 90px 0px;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #04444b;
+  padding: 0;
+  font-family: Arial, Times, serif;
+}
+
+
+.contentleft h2,
+.contentright h2 {
+  margin: 0;
+  color: white;
+  font-family: Impact;
+  display: block;
+  background-color: #04444b;
+  padding: 10px 10px;
+}
+
+.contentleft p,
+.contentright p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: sans-serif;
+  display: block;
+  padding: 10px 5px;
+}
+
+.pt-img {
+  height: 800px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  margin: 0px;
 }

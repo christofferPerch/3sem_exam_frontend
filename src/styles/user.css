@@ -29,15 +29,19 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-button {
-    background-color: #08a4b7;
-    color: white;
-    padding: 10px 16px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    width: 100%;
+/*button {*/
+/*    background-color: #08a4b7;*/
+/*    color: white;*/
+/*    padding: 10px 16px;*/
+/*    margin: 8px 0;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    font-size: 20px;*/
+/*    width: 100%;*/
+/*}*/
+
+button:hover {
+    opacity: 0.8;
 }
 
 .signup-p {
@@ -45,7 +49,7 @@ button {
 }
 
 .signup-btn {
-    background-color: #08a4b7;
+    background-color: #0b828f;
     color: white;
     padding: 10px 16px;
     margin: 6px 0;
@@ -55,18 +59,96 @@ button {
     width: 100%;
 }
 
-.signup-home-btn {
-    background-color: #08a4b7;
-    color: white;
-    padding: 10px 16px;
-    margin: 6px 0;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    width: 50px;
+/* HOME PAGE */
+.home-h1 {
+    text-align: center;
+    margin: auto;
+    height: 50px;
+    line-height: 6;
+    color: #dcdcdc;
+    font-family: Impact, sans-serif, Arial, Helvetica;
+    font-size: 50px;
 }
 
-button:hover {
-    opacity: 0.8;
+.home-h3 {
+    text-align: center;
+    margin-bottom: auto;
+    line-height: 8;
+    height: 130px;
+    color: #dcdcdc;
+    font-family: Impact, sans-serif, Arial, Helvetica;
+    font-size: 30px;
+
 }
+
+.home-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.signup-home-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0b828f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 150px;
+    height: 40px;
+    font-family: sans-serif, Arial, Helvetica;
+}
+
+.signup-home-btn:hover {
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+/* Style all font awesome icons */
+.fa {
+    padding: 5px 5px;
+    margin: 2px;
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+/* Instagram */
+.fa-instagram {
+    background: #7b55ee;
+    color: white;
+}
+
+/* YouTube */
+.fa-youtube {
+    background: #d91919;
+    color: white;
+}
+
+
 
