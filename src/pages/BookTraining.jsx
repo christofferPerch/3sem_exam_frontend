@@ -6,6 +6,7 @@ function BookTraining() {
 
     const [training, setTraining] = useState([]);
     const [refresh, setRefresh] = useState(false);
+    const [viewUsers, setViewUsers] = useState(0);
 
     useEffect(() => {
         const getData = async () => {
@@ -16,8 +17,13 @@ function BookTraining() {
         getData();
     }, [refresh]);
 
-    const handleSubmit = () => {
-        userFacade.addUserToTrainingSession(userFacade.getUserName(),trainingFacade.id)
+
+    const handleSubmit = (userName, trainingId) => {
+        userFacade.addUserToTrainingSession(userName,trainingId)
+    }
+
+    const handleDelete = (userName, trainingId) => {
+        userFacade.removeUserToTrainingSession(userName,trainingId)
     }
 
     return (
@@ -32,6 +38,7 @@ function BookTraining() {
                     <th>Category</th>
                     <th>Participants</th>
                     <th>Book</th>
+                    <th>Deregister</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,12 +51,13 @@ function BookTraining() {
                             <td>{data.fullAddress}</td>
                             <td>{data.category.categoryName}</td>
                             <td>
-                                <button onClick={() => {
-                                    setViewUsers(data.id)
-                                }}>{data.users.length}/{data.maxParticipants}</button>
+                                <button>{data.users.length}/{data.maxParticipants}</button>
                             </td>
                             <td>
-                                <button onClick={handleSubmit}>Book now</button>
+                                <button onClick={() => handleSubmit(userFacade.getUserName(),data.id)}>Book now</button>
+                            </td>
+                            <td>
+                                <button onClick={() => handleDelete(userFacade.getUserName(),data.id)}>Deregister</button>
                             </td>
                         </tr>
 

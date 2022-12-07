@@ -59,12 +59,12 @@ function UserFacade () {
 
     const addUserToTrainingSession = (userName,trainingId) => {
         const options = apiFacade.makeOptions("POST",null,null);
-        return fetch(API_URL+"/api/users/add/"+userName+"/"+trainingId)
+        return fetch(API_URL+"/api/users/add/"+userName+"/"+trainingId,options)
             .then(apiFacade.handleHttpErrors)
     }
     const removeUserToTrainingSession = (userName,trainingId) => {
         const options = apiFacade.makeOptions("DELETE",null,null);
-        return fetch(API_URL+"/api/users/add/"+userName+"/"+trainingId)
+        return fetch(API_URL+"/api/users/remove/"+userName+"/"+trainingId,options)
             .then(apiFacade.handleHttpErrors)
     }
 
