@@ -5,7 +5,6 @@ function BookTraining(props) {
 
     const [training, setTraining] = useState([]);
     const [refresh, setRefresh] = useState(false);
-    const [viewUsers, setViewUsers] = useState(0);
 
     useEffect(() => {
         const getData = async () => {
@@ -28,53 +27,24 @@ function BookTraining(props) {
                     <th>Participants</th>
                 </tr>
                 {training.map((data) => {
-                    <tr key={data.id}>
-                        <td>{data.title}</td>
-                        <td>{data.time}</td>
-                        <td>{data.date}</td>
-                        <td>{data.fullAddress}</td>
-                        <td>{data.category.categoryName}</td>
-                        <td>
-                            <button onClick={() => {
-                                setViewUsers(data.id)
-                            }}>{data.users.length}/{data.maxParticipants}</button>
-                        </td>
-                    </tr>
-                    {
-                        data.users.map((user) => {
-                            {
-                                if (data.id == viewUsers) {
-                                    return (
-                                        <>
-                                            <tr>
-                                                <th>Username</th>
-                                                <th>
-                                                    <button onClick={() => {
-                                                        setViewUsers(0)
-                                                    }}>Close
-                                                    </button>
-                                                </th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-
-                                            <tr>
-                                                <td>{user.userName}</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </>
-                                    );
-                                }
-                            }
-                        })
-                    }
+                    return (
+                        <tr key={data.id}>
+                            <td>{data.title}</td>
+                            <td>{data.time}</td>
+                            <td>{data.date}</td>
+                            <td>{data.fullAddress}</td>
+                            <td>{data.category.categoryName}</td>
+                            <td>
+                                <button onClick={() => {
+                                    setViewUsers(data.id)
+                                }}>{data.users.length}/{data.maxParticipants}</button>
+                            </td>
+                        </tr>
+                    );
                 })}
-
-
             </table>
-
-        </>)
+        </>
+    )
 }
 
 export default BookTraining;

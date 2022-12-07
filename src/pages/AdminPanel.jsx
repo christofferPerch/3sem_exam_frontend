@@ -12,7 +12,7 @@ function AdminPanel({trainingFacade, loggedIn}) {
 
     useEffect(() => {
         const getData = async () => {
-            trainingFacade.getAllTrainingSessions((data) => {
+            await trainingFacade.getAllTrainingSessions((data) => {
                 setTraining(data);
             }, "Some error")
         }
@@ -31,7 +31,7 @@ function AdminPanel({trainingFacade, loggedIn}) {
         event.preventDefault();
     }
 
-    if(userFacade.hasUserAccess("admin", loggedIn)){
+    // if(userFacade.hasUserAccess("admin", loggedIn)){
     return (
         <div>
             <h1 className={"myBody"}>TRAINING SESSION SCHEDULE</h1>
@@ -249,7 +249,7 @@ function AdminPanel({trainingFacade, loggedIn}) {
             </form>
         </div>
     );
-    }
+    // }
 }
 
 //{data.fullAddress}
