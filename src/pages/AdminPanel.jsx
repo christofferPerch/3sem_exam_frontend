@@ -31,7 +31,7 @@ function AdminPanel({trainingFacade, loggedIn}) {
         event.preventDefault();
     }
 
-    if(userFacade.hasUserAccess("admin", loggedIn)){
+    //if(userFacade.hasUserAccess("admin", loggedIn)){
     return (
         <div>
             <h1 className={"myBody"}>TRAINING SESSION SCHEDULE</h1>
@@ -125,8 +125,8 @@ function AdminPanel({trainingFacade, loggedIn}) {
                         <th>Full address</th>
                         <th>Category</th>
                         <th>Participants</th>
-                        <th>Edit</th>
                         <th>Delete</th>
+                        <th>Edit</th>
                     </tr>
 
                     {training.map((data) => {
@@ -198,17 +198,17 @@ function AdminPanel({trainingFacade, loggedIn}) {
                                         <td><button onClick={() => {setViewUsers(data.id)}}>{data.users.length}/{data.maxParticipants}</button></td>
                                         <td>
                                             <button onClick={() => {
-                                                setEdit(data.id);
-                                            }}>Edit
-                                            </button>
-                                        </td>
-                                        <td>
-                                            <button onClick={() => {
                                                 trainingFacade.deleteTrainingSession(data.id).then(() => {
                                                     setRefresh(!refresh);
                                                 });
 
                                             }}>Delete
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button onClick={() => {
+                                                setEdit(data.id);
+                                            }}>Edit
                                             </button>
                                         </td>
                                     </tr>
@@ -250,7 +250,7 @@ function AdminPanel({trainingFacade, loggedIn}) {
         </div>
     );
     }
-}
+//}
 
 //{data.fullAddress}
 

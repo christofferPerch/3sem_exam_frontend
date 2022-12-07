@@ -38,8 +38,6 @@ function UserFacade () {
             .then(apiFacade.handleHttpErrors)
     }
 
-
-
     const deleteUser = (userName) => {
         const options = apiFacade.makeOptions("DELETE",null,null);
         return fetch(API_URL +"/api/users/"+userName,options)
@@ -51,10 +49,8 @@ function UserFacade () {
         return fetch(API_URL+"/api/users/"+userName,options)
             .then(apiFacade.handleHttpErrors)
     }
-    const getAllUsers = () => {
-        const options = apiFacade.makeOptions("GET",null,null);
-        return fetch(API_URL+"/api/users/all",options)
-            .then(apiFacade.handleHttpErrors)
+    const getAllUsers = (updateAction, setErrorMessage) => {
+        return apiFacade.fetchData("users/all",updateAction,setErrorMessage)
     }
 
     const addUserToTrainingSession = (userName,trainingId) => {
@@ -150,8 +146,8 @@ function UserFacade () {
         getUserZipCode,
         getUserCityName,
         getUserPass,
-        deleteUser
-
+        deleteUser,
+        getAllUsers
     }
 
 }
