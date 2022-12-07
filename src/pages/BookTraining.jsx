@@ -17,15 +17,6 @@ function BookTraining() {
         getData();
     }, [refresh]);
 
-
-    const handleSubmit = (userName, trainingId) => {
-        userFacade.addUserToTrainingSession(userName, trainingId)
-    }
-
-    const handleDelete = (userName, trainingId) => {
-        userFacade.removeUserToTrainingSession(userName, trainingId)
-    }
-
     const handleRefresh = (evt) => {
         evt.preventDefault
     }
