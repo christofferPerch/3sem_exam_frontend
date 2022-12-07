@@ -1,24 +1,52 @@
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .myBody {
-    margin:20px;
+    margin: 20px;
 }
 
+.userViewHeader {
+    border: 1px solid black;
+    border-top-width: 2px;
+    font-size: small;
+    margin: 10px;
+    width: 80%;
+    background-color: white;
 
-hr{
-    color:lightgrey;
+}
+
+.userView {
+    border: 1px solid black;
+    height: 20px;
+    font-size: small;
+}
+
+.blue {
+    background-color: #2196F3;
+}
+/* Blue */
+
+
+hr {
+    color: lightgrey;
 }
 
 table {
+    border-spacing: 0;
+    /*border-collapse: separate;*/
+    border-radius: 25px;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-td, th {
-    border: 1px solid #dddddd;
+th {
+    text-align: center;
+}
+
+td {
+    /*border: 1px solid #dddddd;*/
     text-align: left;
     padding: 8px;
 }

@@ -29,20 +29,20 @@ function AdminPanel({trainingFacade}) {
         event.preventDefault();
     }
 
-    if(userFacade.hasUserAccess("admin", true)){
+    //if(userFacade.hasUserAccess("admin", true)){
     return (
         <div>
             <h1 className={"myBody"}>TRAINING SESSION SCHEDULE</h1>
             {create ? (
                 <div>
-                    <button onClick={() => {
+                    <button className={"blue"} onClick={() => {
                         setCreate(false)
                     }}>Cancel
                     </button>
 
                     <form onSubmit={handleSubmit}>
                         <table>
-                            <tr>
+                            <tr className={"blue"}>
                                 <th>Title</th>
                                 <th>Time</th>
                                 <th>Date</th>
@@ -96,27 +96,21 @@ function AdminPanel({trainingFacade}) {
                                     }}>Submit
                                     </button>
                                 </td>
-                                <td>
-
-                                </td>
                             </tr>
                         </table>
                     </form>
                 </div>
             ) : (
-                <button onClick={() => {
+                <button className={"blue"} onClick={() => {
                     setCreate(true)
                 }}>Create training session</button>
             )}
 
             <br/>
             <br/>
-            <hr/>
-            <br/>
-            <br/>
             <form onSubmit={handleSubmit}>
                 <table>
-                    <tr>
+                    <tr className={"blue"}>
                         <th>Title</th>
                         <th>Time</th>
                         <th>Date</th>
@@ -129,6 +123,7 @@ function AdminPanel({trainingFacade}) {
 
                     {training.map((data) => {
                         if (edit == data.id) {
+                            //todo: add the existing values to input fields
                             return (
                                 <tr key={data.id}>
                                     <td><input type="text" placeholder={"Title"} value={inputs.title}
@@ -178,9 +173,6 @@ function AdminPanel({trainingFacade}) {
                                         }}>Submit
                                         </button>
                                     </td>
-                                    <td>
-
-                                    </td>
                                 </tr>
 
                             );
@@ -193,7 +185,11 @@ function AdminPanel({trainingFacade}) {
                                         <td>{data.date}</td>
                                         <td>{data.fullAddress}</td>
                                         <td>{data.category.categoryName}</td>
-                                        <td><button onClick={() => {setViewUsers(data.id)}}>{data.users.length}/{data.maxParticipants}</button></td>
+                                        <td>
+                                            <button onClick={() => {
+                                                setViewUsers(data.id)
+                                            }}>{data.users.length}/{data.maxParticipants}</button>
+                                        </td>
                                         <td>
                                             <button onClick={() => {
                                                 setEdit(data.id);
@@ -211,33 +207,41 @@ function AdminPanel({trainingFacade}) {
                                         </td>
                                     </tr>
                                     {data.users.map((user) => {
-                                        {if(data.id == viewUsers){
-                                            return (
-                                                <>
-                                                    <tr>
-                                                        <th>Username</th>
-                                                        <th>Email</th>
-                                                        <th>Address</th>
-                                                        <th>Zip</th>
-                                                        <th>City</th>
-                                                        <th><button onClick={() => {setViewUsers(0)}}>Close</button></th>
-                                                        <th></th>
-                                                        <th></th>
-                                                    </tr>
+                                        //todo fix so header only shows once. + make participants button toggle or add show/hide button
+                                        {
+                                            if (data.id == viewUsers) {
+                                                return (
+                                                    <>
+                                                        <tr className={"userViewHeader"}>
+                                                                <th>Username</th>
+                                                                <th>Email</th>
+                                                                <th>Address</th>
+                                                                <th>Zip</th>
+                                                                <th>City</th>
+                                                                <th>
+                                                                    <button onClick={() => {
+                                                                        setViewUsers(0)
+                                                                    }}>Close
+                                                                    </button>
+                                                                </th>
+                                                                <th></th>
+                                                                <th></th>
+                                                        </tr>
 
-                                                    <tr>
-                                                        <td>{user.userName}</td>
-                                                        <td>{user.userEmail}</td>
-                                                        <td>{user.address.streetAddress}</td>
-                                                        <td>{user.address.cityInfo.zipCode}</td>
-                                                        <td>{user.address.cityInfo.cityName}</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </>
+                                                        <tr className={"userView"}>
+                                                            <td>{user.userName}</td>
+                                                            <td>{user.userEmail}</td>
+                                                            <td>{user.address.streetAddress}</td>
+                                                            <td>{user.address.cityInfo.zipCode}</td>
+                                                            <td>{user.address.cityInfo.cityName}</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </>
                                                 );
-                                        }}
+                                            }
+                                        }
                                     })}
                                 </>
                             );
@@ -247,7 +251,7 @@ function AdminPanel({trainingFacade}) {
             </form>
         </div>
     );
-    }
+    //   }
 }
 
 //{data.fullAddress}
