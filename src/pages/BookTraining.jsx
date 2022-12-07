@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import trainingFacade from "../utils/trainingFacade.js";
+import userFacade from "../utils/userFacade.js";
 
-function BookTraining(props) {
+function BookTraining() {
 
     const [training, setTraining] = useState([]);
     const [refresh, setRefresh] = useState(false);
@@ -15,9 +16,14 @@ function BookTraining(props) {
         getData();
     }, [refresh]);
 
+    const handleSubmit = () => {
+        userFacade.addUserToTrainingSession(userFacade.getUserName(),trainingFacade.id)
+    }
+
     return (
         <>
             <table>
+                <thead>
                 <tr>
                     <th>Title</th>
                     <th>Time</th>
@@ -25,7 +31,10 @@ function BookTraining(props) {
                     <th>Full address</th>
                     <th>Category</th>
                     <th>Participants</th>
+                    <th>Book</th>
                 </tr>
+                </thead>
+                <tbody>
                 {training.map((data) => {
                     return (
                         <tr key={data.id}>
@@ -39,9 +48,14 @@ function BookTraining(props) {
                                     setViewUsers(data.id)
                                 }}>{data.users.length}/{data.maxParticipants}</button>
                             </td>
+                            <td>
+                                <button onClick={handleSubmit}>Book now</button>
+                            </td>
                         </tr>
+
                     );
                 })}
+                </tbody>
             </table>
         </>
     )

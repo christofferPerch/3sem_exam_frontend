@@ -150,7 +150,9 @@ function UserFacade () {
         getUserZipCode,
         getUserCityName,
         getUserPass,
-        deleteUser
+        deleteUser,
+        addUserToTrainingSession,
+        removeUserToTrainingSession
 
     }
 
