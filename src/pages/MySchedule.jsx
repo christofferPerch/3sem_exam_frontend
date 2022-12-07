@@ -32,7 +32,7 @@ function MySchedule() {
                     <th>FULL ADDRESS</th>
                     <th>CATEGORY</th>
                     <th>PARTICIPANTS</th>
-                    <td>Deregister</td>
+                    <td>DEREGISTER</td>
                 </tr>
                 </thead>
                 <tbody>
