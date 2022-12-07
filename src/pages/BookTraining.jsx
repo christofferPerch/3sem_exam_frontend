@@ -11,7 +11,7 @@ function BookTraining() {
     useEffect(() => {
         const getData = async () => {
             await trainingFacade.getAllTrainingSessions((data) => {
-                setTraining(data);
+                setTraining(   data);
             }, "Some error")
         }
         getData();
@@ -19,11 +19,15 @@ function BookTraining() {
 
 
     const handleSubmit = (userName, trainingId) => {
-        userFacade.addUserToTrainingSession(userName,trainingId)
+        userFacade.addUserToTrainingSession(userName, trainingId)
     }
 
     const handleDelete = (userName, trainingId) => {
-        userFacade.removeUserToTrainingSession(userName,trainingId)
+        userFacade.removeUserToTrainingSession(userName, trainingId)
+    }
+
+    const handleRefresh = (evt) => {
+        evt.preventDefault
     }
 
     return (
@@ -54,10 +58,20 @@ function BookTraining() {
                                 <button>{data.users.length}/{data.maxParticipants}</button>
                             </td>
                             <td>
-                                <button onClick={() => handleSubmit(userFacade.getUserName(),data.id)}>Book now</button>
+                                <button onSubmit={handleRefresh} onClick={() => {
+                                    userFacade.addUserToTrainingSession(userFacade.getUserName(), data.id).then(() => {
+                                        setRefresh(!refresh)
+                                    })
+                                }}>Book now
+                                </button>
                             </td>
                             <td>
-                                <button onClick={() => handleDelete(userFacade.getUserName(),data.id)}>Deregister</button>
+                                <button onSubmit={handleRefresh} onClick={() => {
+                                    userFacade.removeUserToTrainingSession(userFacade.getUserName(), data.id).then(() => {
+                                        setRefresh(!refresh)
+                                    })
+                                }}>Deregister
+                                </button>
                             </td>
                         </tr>
 
