@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp.jsx";
 import SignUpConfirmation from "./pages/SignUpConfirmation";
 import Profile from "./pages/Profile.jsx";
 import BookTraining from "./pages/BookTraining.jsx";
+import MySchedule from "./pages/MySchedule.jsx";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
                 <Route path="signin" element={!loggedIn ? (<SignIn setLoggedIn={setLoggedIn}/>) : (<><Home/></>)}/>
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/booking" element={<BookTraining/>}/>
+                <Route path="myschedule" element={<MySchedule/>}></Route>
                 <Route path="/SignUpConfirmation" element={<SignUpConfirmation/>}/>
                 <Route path="admin-panel" element={<AdminPanel trainingFacade={trainingFacade} loggedIn={loggedIn}/>}/>
                 <Route path="admin-panel/user-overview" element={<UserOverview userFacade={userFacade}/>}/>

@@ -10,6 +10,10 @@ function TrainingFacade(){
         return apiFacade.fetchData("training/" + id, updateAction, setErrorMessage)
     }
 
+    const getTrainingSessionsByUser = (userName, updateAction, setErrorMessage) => {
+        return apiFacade.fetchData("training/myschedule/" + userName, updateAction, setErrorMessage)
+    }
+
     const createTrainingSession = (trainingSession) => {
         const options = apiFacade.makeOptions("POST", null, trainingSession)
         return fetch(API_URL + "/api/training", options)
@@ -31,6 +35,7 @@ function TrainingFacade(){
     return {
         getAllTrainingSessions,
         getTrainingSessionById,
+        getTrainingSessionsByUser,
         createTrainingSession,
         updateTrainingSession,
         deleteTrainingSession
