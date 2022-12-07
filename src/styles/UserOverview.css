@@ -21,3 +21,47 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.deleteBtn, .editBtn, .submitUpdate{
+    background-color:#0B828F;
+    border:0px;
+    color:white;
+    padding:8px;
+}
+
+.closeEditBtn{
+    background-color:#DC3545;
+    border:0px;
+    color:white;
+    padding:8px;
+}
+
+h1{
+    color:white;
+    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+    border-radius:5px;
+    max-width:600px;
+    background-color:#0B828F;
+    word-wrap:break-word;
+    padding:12px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 285px
+}
+
+input[type="text"] {
+    width:200px !important;
+    height:35px !important;
+    border-radius:5px;
+}
+
+.myForm{
+    margin: 20px;
+    max-width:100%;
+}
+
+@media only screen and (max-width:768px){
+    .myForm{
+        margin:0px;
+    }
+}

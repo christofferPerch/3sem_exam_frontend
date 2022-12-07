@@ -4,7 +4,7 @@ import data from "bootstrap/js/src/dom/data.js";
 
 function UserOverview({userFacade}) {
     const [users, setUsers] = useState([])
-    const [edit, setEdit] = useState(0)
+    const [edit, setEdit] = useState("")
     const [refresh, setRefresh] = useState(false);
     const [inputs, setInputs] = useState({});
 
@@ -20,7 +20,7 @@ function UserOverview({userFacade}) {
 
 
     function setErrorMessage() {
-        return "eRror"
+        return "Error"
     }
 
 
@@ -34,9 +34,9 @@ function UserOverview({userFacade}) {
     }, [refresh]);
 
     return (
-        <div>
-            <h1>User overview</h1>
-            <form onSubmit={handleSubmit}>
+        <div >
+            <h1>User overview🔑</h1>
+            <form onSubmit={handleSubmit} className={"myForm"}>
                 <table>
                     <tr>
                         <th>Username</th>
@@ -48,12 +48,11 @@ function UserOverview({userFacade}) {
                         <th>Edit</th>
                     </tr>
                     {users.map((user) => {
-                        if (edit == data.id) {
+                        if (edit == user.userName) {
                             return (
                                 <>
                                     <tr>
-                                        <td><input type="text" placeholder={"Username"} value={inputs.userName}
-                                                   onChange={handleChange} name={"userName"}/></td>
+                                        <td>{user.userName}</td>
                                         <td><input type="text" placeholder={"Email"} value={inputs.userEmail}
                                                    onChange={handleChange} name={"userEmail"}/></td>
                                         <td><input type="text" placeholder={"Address"} value={inputs.streetAddress}
@@ -62,15 +61,17 @@ function UserOverview({userFacade}) {
                                         <td><input type="text" placeholder={"Address"} value={inputs.cityName}
                                                    onChange={handleChange} name={"cityName"}/></td>
                                         <td>
-                                            <button onClick={() => {
+                                            <button className={"submitUpdate"} onClick={() => {
                                                 userFacade.updateUser(inputs.userName, inputs.userEmail, user.userPass, inputs.streetAddress, user.address.cityInfo.zipCode, user.address.cityInfo.cityName).then(() => {
-                                                    setEdit(0)
+                                                    setEdit(user.userName)
                                                     setRefresh(!refresh)
                                                 })
                                             }}>
                                             Submit</button>
                                         </td>
-                                        <td></td>
+                                        <td><button className={"closeEditBtn"} onClick={() => {
+                                            setEdit(0)
+                                        }}>Close</button></td>
                                     </tr>
                                 </>
                             );
@@ -84,7 +85,7 @@ function UserOverview({userFacade}) {
                                         <td>{user.address.cityInfo.zipCode}</td>
                                         <td>{user.address.cityInfo.cityName}</td>
                                         <td>
-                                            <button onClick={() => {
+                                            <button className={"deleteBtn"} onClick={() => {
                                                 userFacade.deleteUser(user.userName).then(() => {
                                                     setRefresh(!refresh)
                                                 })
@@ -92,8 +93,8 @@ function UserOverview({userFacade}) {
                                             </button>
                                         </td>
                                         <td>
-                                            <button onClick={() => {
-                                                setEdit(user.id)
+                                            <button className={"editBtn"} onClick={() => {
+                                                setEdit(user.userName)
                                             }}>Edit
                                             </button>
                                         </td>
