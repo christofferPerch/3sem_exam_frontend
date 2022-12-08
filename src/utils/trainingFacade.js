@@ -27,7 +27,7 @@ function TrainingFacade(){
         return fetch(API_URL + "/api/training/"+id, options)
             .then(apiFacade.handleHttpErrors)
     }
-
+    
     return {
         getAllTrainingSessions,
         getTrainingSessionById,
