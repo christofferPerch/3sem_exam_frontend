@@ -123,7 +123,7 @@ function AdminPanel({trainingFacade}) {
 
                     {training.map((data) => {
                         if (edit == data.id) {
-                            //todo: add the existing values to input fields
+                            //todo:??maybe add the existing values to input fields
                             return (
                                 <tr key={data.id}>
                                     <td><input type="text" placeholder={"Title"} value={inputs.title}
@@ -173,6 +173,7 @@ function AdminPanel({trainingFacade}) {
                                         }}>Submit
                                         </button>
                                     </td>
+                                    <td><button onClick={()=> setEdit(0)}>cancel </button></td>
                                 </tr>
 
                             );
