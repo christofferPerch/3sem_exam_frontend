@@ -16,7 +16,9 @@ function Header({loggedIn, setLoggedIn}) {
             <NavLink className="nav-logo" to="/"><i className="fa fa-heartbeat"></i></NavLink>
             <NavLink className="nav-home" to="/"><i></i> Home</NavLink>
 
-            {loggedIn ? (<NavLink  to="booking"><i className="fa fa-sign-in"></i></NavLink>) : <></>}
+            {loggedIn ? (<NavLink  to="booking"><i className="fa fa-sign-in"></i>BOOK TRAINING</NavLink>) : <></>}
+
+            {loggedIn ? (<NavLink  to="admin-panel"><i className="fa fa-sign-in"></i>ADMIN PAGE</NavLink>) : <></>}
 
             {loggedIn ? (<NavLink className="profileIcon" to="profile"><i className="fa fa-user"></i> {userFacade.getUserName()}</NavLink>) : <></>}
 
