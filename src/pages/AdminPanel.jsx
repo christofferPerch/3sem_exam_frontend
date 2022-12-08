@@ -29,17 +29,24 @@ function AdminPanel({trainingFacade}) {
         event.preventDefault();
     }
 
+    const createTrainingStyle = {
+        display: 'flex',
+        alignItems: 'center'
+    };
+
     //if(userFacade.hasUserAccess("admin", true)){
     return (
-        <div>
-            <h1 className={"myBody"}>TRAINING SESSION SCHEDULE</h1>
+        <div className={"myBody"}>
+            <h1>TRAINING SESSION SCHEDULE 🏋️</h1>
             {create ? (
                 <div>
-                    <button className={"blue"} onClick={() => {
-                        setCreate(false)
-                    }}>Cancel
-                    </button>
-
+                    <div className={"closeTrainingSessionDiv"}>
+                        <button className={"blue closeTrainingSessionBtn"} onClick={() => {
+                            setCreate(false)
+                        }}>Cancel
+                        </button>
+                    </div>
+                    <div className={"createTrainingForm"}>
                     <form onSubmit={handleSubmit}>
                         <table>
                             <tr className={"blue"}>
@@ -99,15 +106,19 @@ function AdminPanel({trainingFacade}) {
                             </tr>
                         </table>
                     </form>
+                    </div>
                 </div>
             ) : (
-                <button className={"blue"} onClick={() => {
-                    setCreate(true)
-                }}>Create training session</button>
+                <div className={"createTrainingSessionDiv"}>
+                    <button className={"blue createTrainingSessionBtn"} onClick={() => {
+                        setCreate(true)
+                    }}>Create training session</button>
+                </div>
             )}
 
             <br/>
             <br/>
+            <div className={"viewTrainingSessionForm"}>
             <form onSubmit={handleSubmit}>
                 <table>
                     <tr className={"blue"}>
@@ -119,6 +130,7 @@ function AdminPanel({trainingFacade}) {
                         <th>Participants</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <th>Email reminder</th>
                     </tr>
 
                     {training.map((data) => {
@@ -206,6 +218,11 @@ function AdminPanel({trainingFacade}) {
                                             }}>Delete
                                             </button>
                                         </td>
+                                        <td>
+                                            <button className={"sendEmails"} onClick={() => {
+
+                                            }}>Email reminder</button>
+                                        </td>
                                     </tr>
                                     {data.users.map((user) => {
                                         //todo fix so header only shows once. + make participants button toggle or add show/hide button
@@ -250,7 +267,9 @@ function AdminPanel({trainingFacade}) {
                     })}
                 </table>
             </form>
+            </div>
         </div>
+
     );
     //   }
 }
