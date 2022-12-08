@@ -4,10 +4,7 @@ import LoggedIn from "./LoggedIn.jsx";
 import "../styles/header.css";
 import SignUpBtn from "./SignUpBtn.jsx";
 import SignInBtn from "./SignInBtn.jsx";
-import logo from "../images/logo.png";
 import userFacade from "../utils/userFacade.js";
-import BookTraining from "../pages/BookTraining.jsx";
-
 
 function Header({loggedIn, setLoggedIn}) {
     return (
