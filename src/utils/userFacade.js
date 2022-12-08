@@ -145,6 +145,7 @@ function UserFacade () {
         getUserRoles,
         getUserName,
         getUserByUserName,
+        getAllUsers,
         getUserEmail,
         getUserAddress,
         getUserZipCode,

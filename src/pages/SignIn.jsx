@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import loginFacade from "../utils/loginFacade.js";
 import "../styles/user.css";
+import {useNavigate} from "react-router";
 import userFacade from "../utils/userFacade.js";
 
 function SignIn({setLoggedIn}) {
     const init = {username: "", password: ""};
     const [loginCredentials, setLoginCredentials] = useState(init);
+    const navigate = useNavigate();
 
     const performLogin = (evt) => {
         evt.preventDefault();
@@ -19,7 +21,10 @@ function SignIn({setLoggedIn}) {
 
     const onChange = (evt) => {
         setLoginCredentials({...loginCredentials, [evt.target.id]: evt.target.value})
+    }
 
+    const handleSignUp = () => {
+        navigate("/signup")
     }
 
     return (
@@ -36,7 +41,7 @@ function SignIn({setLoggedIn}) {
             <p>_________________________________________</p>
             <form>
                 <p className="signup-p">Don't have an account yet? Sign up now!</p>
-                <button className="signup-btn">Sign Up</button>
+                <button onClick={handleSignUp} className="signup-btn">Sign Up</button>
             </form>
         </div>
     )
