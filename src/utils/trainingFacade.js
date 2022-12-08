@@ -10,6 +10,13 @@ function TrainingFacade(){
         return apiFacade.fetchData("training/" + id, updateAction, setErrorMessage)
     }
 
+    const getById = (id) => {
+        const options = apiFacade.makeOptions("GET",null,null);
+        return fetch(API_URL+"/api/training/get/"+id,options)
+            .then(apiFacade.handleHttpErrors)
+    }
+
+
     const createTrainingSession = (trainingSession) => {
         const options = apiFacade.makeOptions("POST", null, trainingSession)
         return fetch(API_URL + "/api/training", options)
@@ -33,7 +40,8 @@ function TrainingFacade(){
         getTrainingSessionById,
         createTrainingSession,
         updateTrainingSession,
-        deleteTrainingSession
+        deleteTrainingSession,
+        getById
     }
 }
 const trainingFacade = TrainingFacade();

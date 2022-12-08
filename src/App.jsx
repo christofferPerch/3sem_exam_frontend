@@ -32,7 +32,7 @@ function App() {
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/booking" element={<BookTraining/>}/>
                 <Route path="/SignUpConfirmation" element={<SignUpConfirmation/>}/>
-                <Route path="admin-panel" element={<AdminPanel trainingFacade={trainingFacade} loggedIn={loggedIn}/>}/>
+                <Route path="admin-panel" element={userFacade.hasUserAccess('admin', loggedIn)&&<AdminPanel trainingFacade={trainingFacade} loggedIn={loggedIn}/>}/>
                 <Route path="admin-panel/user-overview" element={<UserOverview userFacade={userFacade}/>}/>
                 <Route path="*" element={<h1>Page Not Found !!!!</h1>}/>
             </Routes>
