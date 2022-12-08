@@ -33,6 +33,7 @@ function SignUp({}) {
         // Email needs "@" to become valid.
         if (!userCredentials.userEmail.includes(atSymbol)) {
             alert("Please enter a valid email address")
+            return
         }
         if (!containsNumber(userCredentials.userPass)) {
             alert("Password must contain at least one number.")

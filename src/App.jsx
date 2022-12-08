@@ -29,7 +29,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home userFacade={userFacade} setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>}/>
                 <Route path="profile" element={<Profile setLoggedIn={setLoggedIn}/>}/>
-                <Route path="signin" element={<SignIn setLoggedIn={setLoggedIn}/>}/>
+                <Route path="signin" element={!loggedIn ? <SignIn setLoggedIn={setLoggedIn}/> : <Home loggedIn={loggedIn}/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/booking" element={<BookTraining/>}/>
                 <Route path="myschedule" element={<MySchedule/>}></Route>

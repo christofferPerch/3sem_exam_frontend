@@ -12,7 +12,6 @@ function SignIn({setLoggedIn}) {
     const performLogin = (evt) => {
         evt.preventDefault();
         login(loginCredentials.username, loginCredentials.password);
-        navigate("/")
     }
 
     const login = (user, pass) => {
