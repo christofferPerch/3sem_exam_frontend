@@ -25,11 +25,10 @@ function SignUp({}) {
 
     const performSignUp = (evt) => {
         evt.preventDefault();
-
-        if (userFacade.getUserByUserName(userCredentials.userName) === fetch(userFacade.getUserName())) {
-            alert("Username already exists")
-        }
-
+        //
+        // if (userFacade.getUserByUserName(userCredentials.userName) === fetch(userFacade.getUserName())) {
+        //     alert("Username already exists")
+        // }
 
         // Email needs "@" to become valid.
         if (!userCredentials.userEmail.includes(atSymbol)) {
