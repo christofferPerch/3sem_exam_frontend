@@ -45,7 +45,8 @@ footer.container {
 .contentleft {
   position: inherit;
   float: left;
-  margin: 50px 0px 90px 200px;
+  /*margin: 50px 0px 90px 200px;*/
+  margin: 5% 7%;
   width: 100%;
   max-width: 500px;
   border: 1px solid #04444b;
@@ -57,7 +58,8 @@ footer.container {
 .contentright {
   position: inherit;
   float: right;
-  margin: 50px 200px 90px 0px;
+  /*margin: 50px 200px 90px 0px;*/
+  margin: 5% 7%;
   width: 100%;
   max-width: 500px;
   border: 1px solid #04444b;
