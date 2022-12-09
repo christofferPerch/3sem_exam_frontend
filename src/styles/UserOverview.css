@@ -1,23 +1,72 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
+.userOverviewBody{
+    margin:40px;
 }
 
-hr{
-    color:lightgrey;
+.userOverviewBody h1{
+    color:white;
+    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+    border-radius:5px;
+    max-width:600px;
+    background-color:#0B828F;
+    word-wrap:break-word;
+    padding:12px;
+    text-align:center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-table {
+.userOverviewBody table {
+    border-spacing: 0;
+    /*border-collapse: separate;*/
+    border-radius: 25px;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+.userOverviewBody td{
+    text-align: center;
+
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
+.userOverviewBody th{
+    text-align: center;
+    padding:5px;
+}
+
+.deleteBtn, .editBtn, .submitUpdate{
+    background-color:#0B828F;
+    border:0px;
+    color:white;
+    padding:8px;
+    border-radius:6px;
+}
+
+.closeEditBtn{
+    background-color:#DC3545;
+    border:0px;
+    color:white;
+    padding:8px;
+}
+
+.userOverviewBody input[type="text"] {
+    width:100% !important;
+    height:35px !important;
+    border-radius:5px;
+}
+
+.myBody form{
+    margin:20px !important;
+}
+
+.myForm{
+    margin: 20px;
+    max-width:100%;
+    overflow-x: auto;
+}
+
+@media only screen and (max-width:768px){
+    .myForm{
+        margin:0px;
+    }
 }

@@ -51,10 +51,8 @@ function UserFacade () {
         return fetch(API_URL+"/api/users/"+userName,options)
             .then(apiFacade.handleHttpErrors)
     }
-    const getAllUsers = () => {
-        const options = apiFacade.makeOptions("GET",null,null);
-        return fetch(API_URL+"/api/users/all",options)
-            .then(apiFacade.handleHttpErrors)
+    const getAllUsers = (updateAction, setErrorMessage) => {
+        return apiFacade.fetchData("users/all",updateAction,setErrorMessage)
     }
 
     const addUserToTrainingSession = (userName,trainingId) => {
@@ -145,13 +143,13 @@ function UserFacade () {
         getUserRoles,
         getUserName,
         getUserByUserName,
-        getAllUsers,
         getUserEmail,
         getUserAddress,
         getUserZipCode,
         getUserCityName,
         getUserPass,
         deleteUser,
+        getAllUsers,
         addUserToTrainingSession,
         removeUserToTrainingSession
 

@@ -39,6 +39,12 @@ function TrainingFacade(){
             .then(apiFacade.handleHttpErrors)
     }
 
+    const sendReminder = (id) => {
+        const options = apiFacade.makeOptions("POST", null, id)
+        return fetch(API_URL + "/api/training/sendReminder", options)
+            .then(apiFacade.handleHttpErrors)
+    }
+
     const getDistance = (from,to, update, error) => {
         return apiFacade.fetchData("training/distance/"+from+"/"+to,update,error)
     }
@@ -49,6 +55,7 @@ function TrainingFacade(){
         getTrainingSessionsByUser,
         createTrainingSession,
         updateTrainingSession,
+        sendReminder,
         deleteTrainingSession,
         getById,
         getDistance
