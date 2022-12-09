@@ -14,15 +14,15 @@ function Header({loggedIn, setLoggedIn}) {
 
         <nav className="topnav">
             <NavLink className="nav-logo" to="/"><i className="fa fa-heartbeat"></i></NavLink>
-            <NavLink className="nav-home" to="/"><i></i> Home</NavLink>
+            <NavLink className="nav-home" to="/"><i></i> HOME</NavLink>
 
-            {loggedIn ? (<NavLink  to="booking"><i className="fa fa-sign-in"></i>BOOK TRAINING</NavLink>) : <></>}
+            {loggedIn ? (<NavLink className="nav-home" to="booking">BOOK TRAINING</NavLink>) : <></>}
 
-            {loggedIn ? (<NavLink  to="admin-panel"><i className="fa fa-sign-in"></i>ADMIN PAGE</NavLink>) : <></>}
+            {loggedIn ? (<NavLink className="nav-home" to="admin-panel">ADMIN PAGE</NavLink>) : <></>}
 
-            {loggedIn ? (<NavLink  to="myschedule">My Schedule</NavLink>) : <></>}
+            {loggedIn ? (<NavLink className="nav-home" to="myschedule">MY SCHEDULE</NavLink>) : <></>}
 
-            {loggedIn ? (<NavLink className="profileIcon" to="profile"><i className="fa fa-user"></i> {userFacade.getUserName()}</NavLink>) : <></>}
+            {loggedIn ? (<NavLink className="profileIcon" to="profile"><i className="fa fa-user"></i>{userFacade.getUserName()}</NavLink>) : <></>}
 
             {!loggedIn ? (<SignUpBtn/>) : (<div></div>)}
 

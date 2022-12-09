@@ -43,6 +43,7 @@ footer.container {
 }
 
 .contentleft {
+  display: block;
   position: inherit;
   float: left;
   /*margin: 50px 0px 90px 200px;*/
@@ -56,6 +57,7 @@ footer.container {
 }
 
 .contentright {
+  display: block;
   position: inherit;
   float: right;
   /*margin: 50px 200px 90px 0px;*/
