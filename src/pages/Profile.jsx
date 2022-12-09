@@ -23,8 +23,14 @@ function Profile({setLoggedIn}) {
         getData();
     }, []);
     const [activeUser,setActiveUser] = useState ({userName:"",userEmail:"",userPass:"",address:{streetAddress:"",cityInfo:{}}})
-    const init = {userName: activeUser.userName,userEmail:activeUser.userEmail,
-        userPass:activeUser.userPass,streetAddress:activeUser.address.streetAddress,zipCode:activeUser.address.cityInfo.zipCode,cityName: activeUser.address.cityInfo.cityName}
+    const init = {
+        userName: activeUser.userName,
+        userEmail:activeUser.userEmail,
+        userPass:activeUser.userPass,
+        streetAddress:activeUser.address.streetAddress,
+        zipCode:activeUser.address.cityInfo.zipCode,
+        cityName: activeUser.address.cityInfo.cityName
+    }
     const [newUser,setNewUser] = useState(init)
 
     console.log(activeUser)

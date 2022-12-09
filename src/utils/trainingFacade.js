@@ -35,13 +35,18 @@ function TrainingFacade(){
             .then(apiFacade.handleHttpErrors)
     }
 
+    const getDistance = (from,to, update, error) => {
+        return apiFacade.fetchData("training/distance/"+from+"/"+to,update,error)
+    }
+
     return {
         getAllTrainingSessions,
         getTrainingSessionById,
         createTrainingSession,
         updateTrainingSession,
         deleteTrainingSession,
-        getById
+        getById,
+        getDistance
     }
 }
 const trainingFacade = TrainingFacade();

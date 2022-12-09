@@ -8,21 +8,23 @@ function Details({clicked,setClicked}) {
 
     const [activeUser,setActiveUser] = useState ({userName:"",userEmail:"",userPass:"",address:{streetAddress:"",cityInfo:{}}})
     const [trainingAddress,setTrainingAddress] = useState({fullAddress:""})
-    const [googleInfo,setGoogleInfo] = useState({distance:"",duration:""})
+    const [distance,setDistance] = useState ("")
+    const [duration,setDuration] = useState("")
 
     useEffect(() => {
-        const getData = async () => {
-            await userFacade.getUserByUserName(userFacade.getUserName()).then((data) => {
+        const getData =  () => {
+             userFacade.getUserByUserName(userFacade.getUserName()).then((data) => {
                 setActiveUser(data);
             }, "Some error")
+
         }
         getData();
     }, []);
 
 
     useEffect(() => {
-        const getData = async () => {
-            await trainingFacade.getById(7).then((data) => {
+        const getData =  () => {
+            trainingFacade.getById(7).then((data) => {
                 setTrainingAddress(data);
             }, "Some error")
         }
@@ -30,32 +32,45 @@ function Details({clicked,setClicked}) {
     }, []);
 
 
-    const originAddress = "odinsvej10lyngby"//activeUser.address.streetAddress+activeUser.address.cityInfo.cityName
-    const destinationAddress = "sanktjacobsvej8aballerup"//trainingAddress.fullAddress
+
+    let originAddress = activeUser.address.streetAddress+activeUser.address.cityInfo.cityName
+    let destinationAddress = trainingAddress.fullAddress
+    originAddress = originAddress.replace(/\s+/g, '');
+    destinationAddress = destinationAddress.replace(/\s+/g, '');
 
 
-
+    console.log(originAddress)
+    console.log(destinationAddress)
 
 
 
     useEffect(() => {
-        const options = apiFacade.makeOptions("GET",null,null);
         const getData = async () => {
-            await fetch(API_URL+"/api/training/distance/"+originAddress+"/"+destinationAddress,options).then((data) => {
-                setGoogleInfo(data);
-            }, "Some error")
+            await trainingFacade.getDistance(originAddress, destinationAddress, (data) => {
+                data.valueOf().rows.map((row) => row.elements.map((element) => {
+                    setDistance(element.distance.text)
+                    setDuration(element.duration.text)
+                }))
+            }, "some error")
         }
-        getData();
-    }, []);
+        if(originAddress !== undefined || destinationAddress !== undefined) {
+            getData()
+        }
 
-    console.log(googleInfo)
+    }, [originAddress,destinationAddress]);
+
+
+
+
 
 
 
     return (
         <>
-            {!clicked ?(
-                <h1>TEST</h1>) : null
+            {!clicked ?(<div><h1>Your address: {originAddress}</h1><br/>
+                    <h1>Distance to the training: {distance} - duration: {duration}</h1></div>
+
+                ): null
             }
         </>
     );
