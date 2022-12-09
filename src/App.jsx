@@ -35,7 +35,7 @@ function App() {
                 <Route path="myschedule" element={<MySchedule/>}></Route>
                 <Route path="/SignUpConfirmation" element={<SignUpConfirmation/>}/>
                 <Route path="admin-panel" element={userFacade.hasUserAccess('admin', loggedIn)&&<AdminPanel trainingFacade={trainingFacade} loggedIn={loggedIn}/>}/>
-                <Route path="admin-panel/user-overview" element={<UserOverview userFacade={userFacade}/>}/>
+                <Route path="admin-panel/user-overview" element={userFacade.hasUserAccess('admin', loggedIn)&&<UserOverview userFacade={userFacade}/>}/>
                 <Route path="*" element={<h1>Page Not Found !!!!</h1>}/>
             </Routes>
 
