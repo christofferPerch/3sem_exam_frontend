@@ -2,16 +2,42 @@ import React, {useEffect, useState} from 'react';
 import userFacade from "../utils/userFacade.js";
 import loginFacade from "../utils/loginFacade.js";
 import {useNavigate} from "react-router";
+import trainingFacade from "../utils/trainingFacade.js";
+import {API_URL} from "../../settings.js";
 
 
 function Profile({setLoggedIn}) {
 
 
     const [checked,setChecked] = useState(false);
-    const init = {userName: userFacade.getUserName(),userEmail:userFacade.getUserEmail(),
-        userPass:userFacade.getUserPass(),streetAddress:userFacade.getUserAddress(),zipCode:userFacade.getUserZipCode(),cityName:userFacade.getUserZipCode()}
-    const [newUser,setNewUser] = useState(init)
     const navigate = useNavigate();
+
+
+
+    useEffect(() => {
+        const getData = async () => {
+            await userFacade.getUserByUserName(userFacade.getUserName()).then((data) => {
+                setActiveUser(data);
+            }, "Some error")
+        }
+        getData();
+    }, []);
+    const [activeUser,setActiveUser] = useState ({userName:"",userEmail:"",userPass:"",address:{streetAddress:"",cityInfo:{}}})
+    const init = {
+        userName: activeUser.userName,
+        userEmail:activeUser.userEmail,
+        userPass:activeUser.userPass,
+        streetAddress:activeUser.address.streetAddress,
+        zipCode:activeUser.address.cityInfo.zipCode,
+        cityName: activeUser.address.cityInfo.cityName
+    }
+    const [newUser,setNewUser] = useState(init)
+
+    console.log(activeUser)
+
+
+
+
 
     const performUpdateUser = (evt) => {
         evt.preventDefault();
@@ -29,7 +55,7 @@ function Profile({setLoggedIn}) {
         setLoggedIn(false)
         navigate("/")
     }
-    console.log(userFacade.getUserPass())
+
     const onChange = (evt) => {
         setNewUser({...newUser, [evt.target.id]: evt.target.value})
         console.log(newUser)
@@ -52,11 +78,13 @@ function Profile({setLoggedIn}) {
             <h1>PROFILE</h1>
                 <button onClick={performDeleteUser}>DELETE PROFILE</button>
                 <button onClick={btnClick}>Edit profile</button>
-            <p>Username: {userFacade.getUserName()}</p>
-                <p>Email: {userFacade.getUserEmail()}</p>
-                <p>Street Address: {userFacade.getUserAddress()}</p>
-                <p>Zip: {userFacade.getUserZipCode()}</p>
-                <p>City: {userFacade.getUserCityName()}</p>
+
+                    <p>Username: {userFacade.getUserName()}</p>
+                    <p>Email: {activeUser.userEmail}</p>
+                    <p>Street Address: {activeUser.address.streetAddress} </p>
+                <p>Street Address: {activeUser.address.cityInfo.zipCode} </p>
+                <p>Street Address: {activeUser.address.cityInfo.cityName} </p>
+
             </div>
             {checked ?  <form onSubmit={performUpdateUser}>
                 <input id="userEmail" type="text" placeholder="Type a new email" onChange={onChange}/>

@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import trainingFacade from "../utils/trainingFacade.js";
 import userFacade from "../utils/userFacade.js";
+import BookingPageDetailsBtn from "../components/BookingPageDetailsBtn.jsx";
+import Details from "../components/Details.jsx";
 
 function BookTraining() {
 
     const [training, setTraining] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [viewUsers, setViewUsers] = useState(0);
+    const [booked,setBooked] = useState(false);
+    const [clicked,setClicked] = useState(true);
 
     useEffect(() => {
         const getData = async () => {
@@ -17,12 +21,22 @@ function BookTraining() {
         getData();
     }, [refresh]);
 
+    const bookBtn = () => {
+        if(booked === true){
+            return "Deregister"
+        }
+        if(!booked){
+            return "Join"
+        }
+    }
+
     const handleRefresh = (evt) => {
         evt.preventDefault
     }
 
     return (
         <>
+            <Details clicked={clicked} setClicked={setClicked}/>
             <table>
                 <thead>
                 <tr>
@@ -32,8 +46,8 @@ function BookTraining() {
                     <th>Full address</th>
                     <th>Category</th>
                     <th>Participants</th>
-                    <th>Book</th>
-                    <th>Deregister</th>
+                    <th>View Details</th>
+                    <th>TEST BTN</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,21 +62,19 @@ function BookTraining() {
                             <td>
                                 <button>{data.users.length}/{data.maxParticipants}</button>
                             </td>
+                            <td>{<BookingPageDetailsBtn clicked={clicked} setClicked={setClicked}/>}</td>
                             <td>
-                                <button onSubmit={handleRefresh} onClick={() => {
-                                    userFacade.addUserToTrainingSession(userFacade.getUserName(), data.id).then(() => {
+                                <button onSubmit={handleRefresh} onClick={!booked ? () =>
+                                    userFacade.addUserToTrainingSession(userFacade.getUserName(),data.id).then(() =>{
                                         setRefresh(!refresh)
+                                    }).then(()=>{
+                                        setBooked(true)
                                     })
-                                }}>Book now
-                                </button>
-                            </td>
-                            <td>
-                                <button onSubmit={handleRefresh} onClick={() => {
-                                    userFacade.removeUserToTrainingSession(userFacade.getUserName(), data.id).then(() => {
+                                    : () => userFacade.removeUserToTrainingSession(userFacade.getUserName(),data.id).then(()=>{
                                         setRefresh(!refresh)
-                                    })
-                                }}>Deregister
-                                </button>
+                                }).then(()=>{
+                                    setBooked(false)
+                                    })}>{bookBtn()}</button>
                             </td>
                         </tr>
 
@@ -70,8 +82,15 @@ function BookTraining() {
                 })}
                 </tbody>
             </table>
+
         </>
+
     )
+
+
+
+
+
 }
 
 export default BookTraining;
