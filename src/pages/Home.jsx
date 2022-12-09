@@ -1,20 +1,27 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
 import SignUpHomeBtn from "../components/SignUpHomeBtn.jsx";
+import BookNowHomeBtn from "../components/BookNowHomeBtn.jsx";
 import ptbackground from "../images/pt2.png"
 import "../styles/main.css";
+import userFacade from "../utils/userFacade.js";
 
 function Home({loggedIn, setLoggedIn}) {
 
     return (
         <div>
             <div className="pt-img" style={{
-                backgroundImage: `url(${ptbackground})`}}>
+                backgroundImage: `url(${ptbackground})`
+            }}>
 
-            <h1 className="home-h1">JOIN ME NOW!</h1>
-            <h3 className="home-h3">Start your training adventure today</h3>
 
-    {!loggedIn ? (<SignUpHomeBtn setLoggedIn={setLoggedIn}/>) : (<div></div>)}
+                {!loggedIn ? <h1 className="home-h1">JOIN ME NOW!</h1> :
+                    <h1 className="home-h1">Welcome {userFacade.getUserName()}</h1>}
+                <h3 className="home-h3">Start your training adventure today</h3>
+
+                {!loggedIn ? (<SignUpHomeBtn setLoggedIn={setLoggedIn}/>) :
+                    (<BookNowHomeBtn setLoggedIn={setLoggedIn}/>)}
+
             </div>
 
             <div className="contentleft">
@@ -45,10 +52,14 @@ function Home({loggedIn, setLoggedIn}) {
                 <p><strong>Phone Number:</strong> <br/>29922992</p>
                 <p><strong>Based in:</strong> <br/> Denmark</p>
                 <p><strong>Location:</strong> <br/> Nørgaardsvej 30 - Kongens Lyngby, 2800</p>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="fa fa-facebook"></a>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="fa fa-twitter"></a>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="fa fa-instagram"></a>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="fa fa-youtube"></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                   className="fa fa-facebook"></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                   className="fa fa-twitter"></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                   className="fa fa-instagram"></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                   className="fa fa-youtube"></a>
 
 
             </div>

@@ -92,6 +92,14 @@ body {
     width:120px;
 }
 
+.topnav input[type=number] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    width:120px;
+}
+
 .topnav .login-container button {
     float: right;
     padding: 6px 10px;
