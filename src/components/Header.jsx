@@ -20,7 +20,7 @@ function Header({loggedIn, setLoggedIn}) {
 
             {userFacade.hasUserAccess('admin',loggedIn) && (<NavLink className="nav-home" to="admin-panel"> ADMIN PANEL </NavLink>)}
 
-            {userFacade.hasUserAccess('admin',loggedIn) && (<NavLink className="nav-home" to="admin-panel/user-overview">User overview</NavLink>)}
+            {userFacade.hasUserAccess('admin',loggedIn) && (<NavLink className="nav-home" to="admin-panel/user-overview">USER OVERVIEW</NavLink>)}
 
             {loggedIn ? (<NavLink className="nav-home" to="myschedule">MY SCHEDULE</NavLink>) : <></>}
 
