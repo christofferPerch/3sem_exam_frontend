@@ -1,21 +1,23 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .myBody{
     margin:40px;
+}
+
+.myBody h1{
+    color:white;
+    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+    border-radius:5px;
+    max-width:600px;
+    background-color:#0B828F;
+    word-wrap:break-word;
+    padding:12px;
+    text-align:center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .createTrainingForm, .viewTrainingSessionForm{
     overflow-x: auto;
     width:100%;
-}
-
-
-h1 {
-    margin: 20px;
-    margin-left: auto !important;
-    margin-right: auto !important;
 }
 
 .userViewHeader {
@@ -35,7 +37,7 @@ h1 {
 }
 
 .blue {
-    background-color: #2196F3;
+    background-color: #0B828F;
 }
 
 /* Blue */
@@ -47,7 +49,7 @@ h1 {
 }
 
 .createTrainingSessionBtn{
-    border:1px solid #2196F3;
+    border:1px solid #0B828F;
     padding:10px;
     font-weight: bold;
     width:200px;
@@ -68,18 +70,29 @@ h1 {
     margin-bottom: 30px;
 }
 
-form{
+.myBody form{
     margin:20px !important;
 }
 
+.myBody input[type="text"] {
+    min-width: 150px !important;
+    width:100% !important;
+    height:35px !important;
+    border-radius:5px;
+}
 
+.participantsTd{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 50px;
+}
 
 
 .sendEmails{
     margin-left:10px;
 }
 
-table {
+.myBody table {
     border-spacing: 0;
     /*border-collapse: separate;*/
     border-radius: 25px;
@@ -88,16 +101,15 @@ table {
     width: 100%;
 }
 
-th {
+.myBody th {
     text-align: center;
+    padding:5px;
 }
 
-td {
+.myBody td {
     /*border: 1px solid #dddddd;*/
     text-align: left;
-    padding: 8px;
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
+
+

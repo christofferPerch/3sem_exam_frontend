@@ -1,42 +1,8 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
+.userOverviewBody{
+    margin:40px;
 }
 
-hr{
-    color:lightgrey;
-}
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-.deleteBtn, .editBtn, .submitUpdate{
-    background-color:#0B828F;
-    border:0px;
-    color:white;
-    padding:8px;
-}
-
-.closeEditBtn{
-    background-color:#DC3545;
-    border:0px;
-    color:white;
-    padding:8px;
-}
-
-h1{
+.userOverviewBody h1{
     color:white;
     box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
     border-radius:5px;
@@ -49,10 +15,48 @@ h1{
     margin-right: auto !important;
 }
 
-input[type="text"] {
-    width:200px !important;
+.userOverviewBody table {
+    border-spacing: 0;
+    /*border-collapse: separate;*/
+    border-radius: 25px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.userOverviewBody td{
+    text-align: center;
+
+}
+
+.userOverviewBody th{
+    text-align: center;
+    padding:5px;
+}
+
+.deleteBtn, .editBtn, .submitUpdate{
+    background-color:#0B828F;
+    border:0px;
+    color:white;
+    padding:8px;
+    border-radius:6px;
+}
+
+.closeEditBtn{
+    background-color:#DC3545;
+    border:0px;
+    color:white;
+    padding:8px;
+}
+
+.userOverviewBody input[type="text"] {
+    width:100% !important;
     height:35px !important;
     border-radius:5px;
+}
+
+.myBody form{
+    margin:20px !important;
 }
 
 .myForm{

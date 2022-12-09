@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "../styles/AdminPanel.css";
 import userFacade from "../utils/userFacade.js";
+import {forEach} from "react-bootstrap/ElementChildren";
 
 function AdminPanel({trainingFacade}) {
     const [training, setTraining] = useState([]);
@@ -29,11 +30,6 @@ function AdminPanel({trainingFacade}) {
         event.preventDefault();
     }
 
-    const createTrainingStyle = {
-        display: 'flex',
-        alignItems: 'center'
-    };
-
     //if(userFacade.hasUserAccess("admin", true)){
     return (
         <div className={"myBody"}>
@@ -59,13 +55,13 @@ function AdminPanel({trainingFacade}) {
                                 <th>Create</th>
                             </tr>
                             <tr>
-                                <td><input type="text" placeholder={"Title"} value={inputs.title}
-                                           onChange={handleChange} name={"title"}/></td>
-                                <td><input type="text" placeholder={"Time"} value={inputs.time} onChange={handleChange}
+                                <td><input type="text" placeholder={"Title"}
+                                           onChange={handleChange} name={"title"} maxLength={45}/></td>
+                                <td><input type="text" placeholder={"Time"} onChange={handleChange}
                                            name={"time"}/></td>
-                                <td><input type="text" placeholder={"Date"} value={inputs.date} onChange={handleChange}
+                                <td><input type="text" placeholder={"Date"} onChange={handleChange}
                                            name={"date"}/></td>
-                                <td><input type="text" placeholder={"Full address"} value={inputs.fullAddress}
+                                <td><input type="text" placeholder={"Full address"}
                                            onChange={handleChange} name={"fullAddress"}/></td>
                                 <select name="category" onChange={handleChange}>
                                     <option disabled={true} selected={true}>Choose category</option>
@@ -82,7 +78,7 @@ function AdminPanel({trainingFacade}) {
                                     <option value="11">Endurance training</option>
                                 </select>
 
-                                <td><input type="number" placeholder={"Max participants"} value={inputs.maxParticipants}
+                                <td><input type="number" placeholder={"Max participants"}
                                            onChange={handleChange} name={"maxParticipants"}/></td>
                                 <td>
                                     <button onClick={() => {
@@ -138,13 +134,13 @@ function AdminPanel({trainingFacade}) {
                             //todo:??maybe add the existing values to input fields
                             return (
                                 <tr key={data.id}>
-                                    <td><input type="text" placeholder={"Title"} value={inputs.title}
-                                               onChange={handleChange} name={"title"}/></td>
-                                    <td><input type="text" placeholder={"Time"} value={inputs.time}
+                                    <td><input type="text" placeholder={"Title"}
+                                               onChange={handleChange} name={"title"} maxLength={45}/></td>
+                                    <td><input type="text" placeholder={"Time"}
                                                onChange={handleChange} name={"time"}/></td>
-                                    <td><input type="text" placeholder={"Date"} value={inputs.date}
+                                    <td><input type="text" placeholder={"Date"}
                                                onChange={handleChange} name={"date"}/></td>
-                                    <td><input type="text" placeholder={"Full address"} value={inputs.fullAddress}
+                                    <td><input type="text" placeholder={"Full address"}
                                                onChange={handleChange} name={"fullAddress"}/></td>
                                     <select name="category" onChange={handleChange}>
                                         <option disabled={true} selected={true}>Choose category</option>
@@ -175,9 +171,9 @@ function AdminPanel({trainingFacade}) {
                                                 "category": {
                                                     "id": inputs.category
                                                 },
-                                                "maxParticipants": inputs.maxParticipants
+                                                "maxParticipants": inputs.maxParticipants,
+                                                "users":data.users
                                             }
-                                            console.log(json)
                                             trainingFacade.updateTrainingSession(json).then(() => {
                                                 setRefresh(!refresh)
                                             });
@@ -198,7 +194,7 @@ function AdminPanel({trainingFacade}) {
                                         <td>{data.date}</td>
                                         <td>{data.fullAddress}</td>
                                         <td>{data.category.categoryName}</td>
-                                        <td>
+                                        <td className={"participantsTd"}>
                                             <button onClick={() => {
                                                 setViewUsers(data.id)
                                             }}>{data.users.length}/{data.maxParticipants}</button>
@@ -220,7 +216,7 @@ function AdminPanel({trainingFacade}) {
                                         </td>
                                         <td>
                                             <button className={"sendEmails"} onClick={() => {
-
+                                                trainingFacade.sendReminder(data.id)
                                             }}>Email reminder</button>
                                         </td>
                                     </tr>

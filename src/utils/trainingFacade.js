@@ -27,13 +27,20 @@ function TrainingFacade(){
         return fetch(API_URL + "/api/training/"+id, options)
             .then(apiFacade.handleHttpErrors)
     }
-    
+
+    const sendReminder = (id) => {
+        const options = apiFacade.makeOptions("POST", null, id)
+        return fetch(API_URL + "/api/training/sendReminder", options)
+            .then(apiFacade.handleHttpErrors)
+    }
+
     return {
         getAllTrainingSessions,
         getTrainingSessionById,
         createTrainingSession,
         updateTrainingSession,
-        deleteTrainingSession
+        deleteTrainingSession,
+        sendReminder
     }
 }
 const trainingFacade = TrainingFacade();

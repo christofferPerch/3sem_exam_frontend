@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import "../styles/UserOverview.css";
-import data from "bootstrap/js/src/dom/data.js";
 
 function UserOverview({userFacade}) {
     const [users, setUsers] = useState([])
@@ -34,11 +33,11 @@ function UserOverview({userFacade}) {
     }, [refresh]);
 
     return (
-        <div >
+        <div className={"userOverviewBody"}>
             <h1>User overview🔑</h1>
             <form onSubmit={handleSubmit} className={"myForm"}>
                 <table>
-                    <tr>
+                    <tr className={"blue"}>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Address</th>
