@@ -4,7 +4,6 @@ import {Route, Routes} from "react-router";
 import Header from "./components/Header.jsx";
 import userFacade from "./utils/userFacade.js";
 import Home from "./pages/Home.jsx";
-import TrainingFacade from "./utils/trainingFacade";
 import AdminPanel from "./pages/AdminPanel.jsx";
 import trainingFacade from "./utils/trainingFacade";
 import UserOverview from "./pages/UserOverview.jsx";
@@ -14,6 +13,7 @@ import SignUpConfirmation from "./pages/SignUpConfirmation";
 import Profile from "./pages/Profile.jsx";
 import BookTraining from "./pages/BookTraining.jsx";
 import MySchedule from "./pages/MySchedule.jsx";
+import cphb from "./images/cphb.png"
 
 function App() {
 
@@ -42,13 +42,17 @@ function App() {
             <br/>
             <br/>
             <footer className="container">
-                &copy;2022 | <a
-                href="https://www.schoolhacks.eu"
+                &copy;Copyright 2022 | <a
+                href="https://www.cphbusiness.dk/"
                 target="_blank"
                 rel="noreferrer noopener"
-            >SchoolHacks</a>
-                <p className="footer-right">Sys Exam 2022 - CphBusiness Academy</p>
+            >cphbusiness</a>
+                <p className="footer-right">
+                    <img src={cphb} width="175px" height="30px"/>
+                </p>
             </footer>
+
+
 
         </div>
     )
