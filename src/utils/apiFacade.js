@@ -16,8 +16,7 @@ function ApiFacade() {
         return fetch(API_URL + "/api/" + endpoint, options)
             .then(handleHttpErrors)
             .then((data) => updateAction(data))
-            .catch(err =>
-            {
+            .catch(err => {
                 if (err.status)
                 {
                     console.log(err)
