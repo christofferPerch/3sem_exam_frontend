@@ -216,7 +216,7 @@ function AdminPanel({trainingFacade}) {
                                         </td>
                                         <td>
                                             <button className={"sendEmails"} onClick={() => {
-                                                trainingFacade.sendReminder(data.id)
+                                                trainingFacade.sendReminder(data)
                                             }}>Email reminder</button>
                                         </td>
                                     </tr>
