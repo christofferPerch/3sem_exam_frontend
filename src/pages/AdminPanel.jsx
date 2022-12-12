@@ -33,7 +33,7 @@ function AdminPanel({trainingFacade}) {
     if(userFacade.hasUserAccess("admin", true)){
     return (
         <div className={"myBody"}>
-            <h1>TRAINING SESSION SCHEDULE 🏋️</h1>
+            <h1>Training Session Schedule / Admin Panel 🏋️</h1>
             {create ? (
                 <div>
                     <div className={"closeTrainingSessionDiv"}>
