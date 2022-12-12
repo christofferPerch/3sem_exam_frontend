@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import "../styles/AdminPanel.css";
+import "../styles/adminpanel.css";
 import userFacade from "../utils/userFacade.js";
 import {forEach} from "react-bootstrap/ElementChildren";
 

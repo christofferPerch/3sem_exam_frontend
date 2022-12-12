@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import "../styles/UserOverview.css";
+import "../styles/useroverview.css";
 
 function UserOverview({userFacade}) {
     const [users, setUsers] = useState([])
@@ -34,7 +34,7 @@ function UserOverview({userFacade}) {
 
     return (
         <div className={"userOverviewBody"}>
-            <h1>User overview🔑</h1>
+            <h1>User Overview🔑</h1>
             <form onSubmit={handleSubmit} className={"myForm"}>
                 <table>
                     <tr className={"blue"}>

@@ -22,10 +22,11 @@ function MySchedule() {
     }
 
     return (
-        <>
+        <div className="tableBody">
+            <h1>My Training Schedule</h1>
             <table>
                 <thead>
-                <tr>
+                <tr className={"blue"}>
                     <th>TITLE</th>
                     <th>TIME</th>
                     <th>DATE</th>
@@ -60,7 +61,7 @@ function MySchedule() {
                 })}
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 

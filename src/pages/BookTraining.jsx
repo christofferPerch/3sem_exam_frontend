@@ -3,6 +3,8 @@ import trainingFacade from "../utils/trainingFacade.js";
 import userFacade from "../utils/userFacade.js";
 import BookingPageDetailsBtn from "../components/BookingPageDetailsBtn.jsx";
 import Details from "../components/Details.jsx";
+import "../styles/user.css";
+
 
 function BookTraining() {
 
@@ -35,11 +37,12 @@ function BookTraining() {
     }
 
     return (
-        <>
+        <div className="tableBody">
+            <h1>Book Training</h1>
             <Details clicked={clicked} setClicked={setClicked}/>
             <table>
                 <thead>
-                <tr>
+                <tr className="blue">
                     <th>Title</th>
                     <th>Time</th>
                     <th>Date</th>
@@ -83,7 +86,7 @@ function BookTraining() {
                 </tbody>
             </table>
 
-        </>
+        </div>
 
     )
 
