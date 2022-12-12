@@ -23,13 +23,16 @@ function BookTraining() {
         getData();
     }, [refresh]);
 
-    const bookBtn = () => {
-        if(booked === true){
-            return "Deregister"
-        }
-        if(!booked){
-            return "Join"
-        }
+    const bookBtn = (data) => {
+        const name = userFacade.getUserName()
+        var text = "join"
+        console.log(data.users)
+        data.users.map((user)=> {
+            if (user.userName === name) {
+                text = "Deregister"
+            }
+        })
+        return text;
     }
 
     const handleRefresh = (evt) => {
@@ -77,7 +80,7 @@ function BookTraining() {
                                         setRefresh(!refresh)
                                 }).then(()=>{
                                     setBooked(false)
-                                    })}>{bookBtn()}</button>
+                                    })}>{bookBtn(data)}</button>
                             </td>
                         </tr>
 
