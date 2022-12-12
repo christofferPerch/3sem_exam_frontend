@@ -30,7 +30,7 @@ function AdminPanel({trainingFacade}) {
         event.preventDefault();
     }
 
-    //if(userFacade.hasUserAccess("admin", true)){
+    if(userFacade.hasUserAccess("admin", true)){
     return (
         <div className={"myBody"}>
             <h1>TRAINING SESSION SCHEDULE 🏋️</h1>
@@ -267,10 +267,7 @@ function AdminPanel({trainingFacade}) {
         </div>
 
     );
-    //   }
+       }
 }
-
-//{data.fullAddress}
-
 
 export default AdminPanel;
