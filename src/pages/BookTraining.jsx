@@ -43,14 +43,14 @@ function BookTraining() {
             <table>
                 <thead>
                 <tr className="blue">
-                    <th>Title</th>
-                    <th>Time</th>
-                    <th>Date</th>
-                    <th>Full address</th>
-                    <th>Category</th>
-                    <th>Participants</th>
-                    <th>View Details</th>
-                    <th>Join</th>
+                    <th>TITLE</th>
+                    <th>TIME</th>
+                    <th>DATE</th>
+                    <th>FULL ADDRESS</th>
+                    <th>CATEGORY</th>
+                    <th>PARTICIPANTS</th>
+                    <th>VIEW DETAILS</th>
+                    <th>JOIN</th>
                 </tr>
                 </thead>
                 <tbody>

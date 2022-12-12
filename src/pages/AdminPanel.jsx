@@ -47,13 +47,13 @@ function AdminPanel({trainingFacade}) {
                     <form onSubmit={handleSubmit}>
                         <table>
                             <tr className={"blue"}>
-                                <th>Title</th>
-                                <th>Time</th>
-                                <th>Date</th>
-                                <th>Full address</th>
-                                <th>Category</th>
-                                <th>Participants</th>
-                                <th>Create</th>
+                                <th>TITLE</th>
+                                <th>TIME</th>
+                                <th>DATE</th>
+                                <th>FULL ADDRESS</th>
+                                <th>CATEGORY</th>
+                                <th>PARTICIPANTS</th>
+                                <th>CREATE</th>
                             </tr>
                             <tr>
                                 <td><input type="text" placeholder={"Title"}
