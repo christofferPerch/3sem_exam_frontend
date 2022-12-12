@@ -46,7 +46,7 @@ function MySchedule() {
                             <th>{data.fullAddress}</th>
                             <th>{data.category.categoryName}</th>
                             <td>
-                                <button>{data.users.length}/{data.maxParticipants}</button>
+                                <p>{data.users.length}/{data.maxParticipants}</p>
                             </td>
                             <td>
                                 <button onSubmit={handleRefresh} onClick={() => {

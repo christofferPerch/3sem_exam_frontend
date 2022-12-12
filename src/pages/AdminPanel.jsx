@@ -9,6 +9,7 @@ function AdminPanel({trainingFacade}) {
     const [refresh, setRefresh] = useState(false);
     const [create, setCreate] = useState(false);
     const [viewUsers, setViewUsers] = useState(0);
+
     useEffect(() => {
         const getData = async () => {
             trainingFacade.getAllTrainingSessions((data) => {

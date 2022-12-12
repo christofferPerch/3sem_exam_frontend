@@ -63,7 +63,7 @@ function BookTraining() {
                             <td>{data.fullAddress}</td>
                             <td>{data.category.categoryName}</td>
                             <td>
-                                <button>{data.users.length}/{data.maxParticipants}</button>
+                                <p>{data.users.length}/{data.maxParticipants}</p>
                             </td>
                             <td>{<BookingPageDetailsBtn clicked={clicked} setClicked={setClicked}/>}</td>
                             <td>
