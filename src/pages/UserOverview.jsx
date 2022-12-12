@@ -38,13 +38,13 @@ function UserOverview({userFacade}) {
             <form onSubmit={handleSubmit} className={"myForm"}>
                 <table>
                     <tr className={"blue"}>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Zip</th>
-                        <th>City</th>
-                        <th>Delete</th>
-                        <th>Edit</th>
+                        <th>USERNAME</th>
+                        <th>EMAIL</th>
+                        <th>ADDRESS</th>
+                        <th>ZIP</th>
+                        <th>CITY</th>
+                        <th>DELETE</th>
+                        <th>EDIT</th>
                     </tr>
                     {users.map((user) => {
                         if (edit == user.userName) {
