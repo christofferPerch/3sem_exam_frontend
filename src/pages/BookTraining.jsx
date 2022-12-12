@@ -50,7 +50,7 @@ function BookTraining() {
                     <th>Category</th>
                     <th>Participants</th>
                     <th>View Details</th>
-                    <th>TEST BTN</th>
+                    <th>Join</th>
                 </tr>
                 </thead>
                 <tbody>
