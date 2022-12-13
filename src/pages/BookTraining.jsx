@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import trainingFacade from "../utils/trainingFacade.js";
 import userFacade from "../utils/userFacade.js";
 import BookingPageDetailsBtn from "../components/BookingPageDetailsBtn.jsx";
-import Details from "../components/Details.jsx";
 import "../styles/user.css";
 
 
@@ -10,14 +9,17 @@ function BookTraining() {
 
     const [training, setTraining] = useState([]);
     const [refresh, setRefresh] = useState(false);
-    const [viewUsers, setViewUsers] = useState(0);
-    const [booked,setBooked] = useState(false);
-    const [clicked,setClicked] = useState(true);
+    const [booked, setBooked] = useState(false);
+    const [clicked, setClicked] = useState(true);
+    const [addresses, setAddresses] = useState({userAddress: "", destinationAddress: ""})
+    const [distance, setDistance] = useState("")
+    const [duration, setDuration] = useState("")
+
 
     useEffect(() => {
         const getData = async () => {
             await trainingFacade.getAllTrainingSessions((data) => {
-                setTraining(   data);
+                setTraining(data);
             }, "Some error")
         }
         getData();
@@ -25,9 +27,9 @@ function BookTraining() {
 
     const bookBtn = (data) => {
         const name = userFacade.getUserName()
-        var text = "join"
+        let text = "Join";
         console.log(data.users)
-        data.users.map((user)=> {
+        data.users.map((user) => {
             if (user.userName === name) {
                 text = "Deregister"
             }
@@ -35,14 +37,42 @@ function BookTraining() {
         return text;
     }
 
+    const onChange = (evt) => {
+        setAddresses({...addresses, [evt.target.id]: evt.target.value})
+    }
+
     const handleRefresh = (evt) => {
         evt.preventDefault
     }
 
+    const calculateDistance = async () => {
+
+        await trainingFacade.getDistance(addresses.userAddress.replace(/\s+/g, ''), addresses.destinationAddress.replace(/\s+/g, ''), (data) => {
+            data.valueOf().rows.map((row) => row.elements.map((element) => {
+                setDistance(element.distance.text)
+                setDuration(element.duration.text)
+            }))
+        })
+    }
+
+    console.log(addresses)
+
     return (
         <div className="tableBody">
             <h1>Book Training</h1>
-            <Details clicked={clicked} setClicked={setClicked}/>
+            {!clicked ? (<div><h3>Please type your address and the destination: </h3>
+                    <br/>
+                    <input type="text" placeholder="Your address" onChange={onChange} id={"userAddress"}/>
+                    <input type="text" placeholder="Training Address" onChange={onChange} id={"destinationAddress"}/>
+                    <button onClick={() => {
+                        calculateDistance()
+                    }}>
+                        Calculate
+                    </button>
+                    <h1>Distance to the training: {distance} - duration: {duration}</h1></div>
+
+            ) : null
+            }
             <table>
                 <thead>
                 <tr className="blue">
@@ -52,7 +82,7 @@ function BookTraining() {
                     <th>FULL ADDRESS</th>
                     <th>CATEGORY</th>
                     <th>PARTICIPANTS</th>
-                    <th>VIEW DETAILS</th>
+                    <th>FIND DISTANCE</th>
                     <th>JOIN</th>
                 </tr>
                 </thead>
@@ -71,15 +101,15 @@ function BookTraining() {
                             <td>{<BookingPageDetailsBtn clicked={clicked} setClicked={setClicked}/>}</td>
                             <td>
                                 <button onSubmit={handleRefresh} onClick={!booked ? () =>
-                                    userFacade.addUserToTrainingSession(userFacade.getUserName(),data.id).then(() =>{
+                                        userFacade.addUserToTrainingSession(userFacade.getUserName(), data.id).then(() => {
+                                            setRefresh(!refresh)
+                                        }).then(() => {
+                                            setBooked(true)
+                                        })
+                                    : () => userFacade.removeUserToTrainingSession(userFacade.getUserName(), data.id).then(() => {
                                         setRefresh(!refresh)
-                                    }).then(()=>{
-                                        setBooked(true)
-                                    })
-                                    : () => userFacade.removeUserToTrainingSession(userFacade.getUserName(),data.id).then(()=>{
-                                        setRefresh(!refresh)
-                                }).then(()=>{
-                                    setBooked(false)
+                                    }).then(() => {
+                                        setBooked(false)
                                     })}>{bookBtn(data)}</button>
                             </td>
                         </tr>
@@ -92,10 +122,6 @@ function BookTraining() {
         </div>
 
     )
-
-
-
-
 
 }
 
