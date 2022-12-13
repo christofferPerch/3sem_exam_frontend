@@ -62,6 +62,7 @@ function BookTraining() {
             <h1>Book Training</h1>
             {!clicked ? (<div><h3>Please type your address and the destination: </h3>
                     <br/>
+                    <h3>Type an address like this: Nørgaardsvej 30 Kongens Lyngby</h3>
                     <input type="text" placeholder="Your address" onChange={onChange} id={"userAddress"}/>
                     <input type="text" placeholder="Training Address" onChange={onChange} id={"destinationAddress"}/>
                     <button onClick={() => {
@@ -82,8 +83,8 @@ function BookTraining() {
                     <th>FULL ADDRESS</th>
                     <th>CATEGORY</th>
                     <th>PARTICIPANTS</th>
-                    <th>FIND DISTANCE</th>
-                    <th>JOIN</th>
+                    <th>CALCULATE DISTANCE</th>
+                    <th>REGISTRATION</th>
                 </tr>
                 </thead>
                 <tbody>

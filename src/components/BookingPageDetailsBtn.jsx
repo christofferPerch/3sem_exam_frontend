@@ -6,7 +6,7 @@ function BookingPageDetailsBtn({clicked,setClicked}) {
 
     const displayBtnText = () => {
         if(clicked){
-            return "Click to calculate distance"
+            return "Click here"
         }
         if(!clicked){
             return "Hide"
